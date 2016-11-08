@@ -1,5 +1,7 @@
 # edu.cpp.cs.cs141.FinalProject
 
+https://blackboard.cpp.edu/webapps/blackboard/content/listContent.jsp?course_id=_134661_1&content_id=_3197518_1&mode=reset
+
 Class Project
 
 This is a team project, and so only one submission per team will be necessary. You will develop a small, yet interesting, text-based games. The specifications for the game are as follows:
