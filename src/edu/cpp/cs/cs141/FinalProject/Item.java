@@ -8,6 +8,6 @@ package edu.cpp.cs.cs141.FinalProject;
  *
  */
 
-public abstract class Item implements GridItem {
+public abstract class Item extends GridItem {
 
 }

@@ -8,6 +8,45 @@ package edu.cpp.cs.cs141.FinalProject;
  * @author Samuel Holt
  *
  */
-public interface GridItem {
+public abstract class GridItem {
+	
+	/**
+	 * This field represents the current
+	 * x-coordinate of the {@link GridItem}.
+	 */
+	private int xCoordinate;
+	
+	/**
+	 * This field represents the current
+	 * y-coordinate of the {@link GridItem}.
+	 */
+	private int yCoordinate;
+	
+	/**
+	 * This method will allow for the modification
+	 * of the {@link #xCoordinate} and {@link #yCoordinate}.
+	 * @param x
+	 * @param y
+	 */
+	public void giveCoordinates(int x, int y){
+		xCoordinate = x;
+		yCoordinate = y;
+	}
+	
+	/**
+	 * This method returns the current x-coordinate of the {@link GridItem}.
+	 * @return xCoordinate
+	 */
+	public int getXCoordinate(){
+		return xCoordinate;
+	}
+	
+	/**
+	 * This method returns the current y-coordinate of the {@link GridItem}.
+	 * @return yCoordinate
+	 */
+	public int getYCoordinate(){
+		return yCoordinate;
+	}
 
 }

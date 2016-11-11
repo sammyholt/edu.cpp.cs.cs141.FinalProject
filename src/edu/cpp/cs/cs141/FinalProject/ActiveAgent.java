@@ -6,6 +6,6 @@ package edu.cpp.cs.cs141.FinalProject;
  * @author Samuel Holt
  *
  */
-public abstract class ActiveAgent {
+public abstract class ActiveAgent extends GridItem {
 
 }

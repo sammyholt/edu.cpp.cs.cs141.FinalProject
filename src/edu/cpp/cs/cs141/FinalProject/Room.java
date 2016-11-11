@@ -7,7 +7,7 @@ package edu.cpp.cs.cs141.FinalProject;
  * @author Samuel Holt
  *
  */
-public class Room implements GridItem {
+public class Room extends GridItem {
 	
 	/**
 	 * This represents if the room has the briefcase.  It will be true if
@@ -35,10 +35,18 @@ public class Room implements GridItem {
 	}
 	
 	/**
+	 * This method will set the {@link #hasBriefcase} value
+	 * of the {@link Room} to true.
+	 */
+	public void giveBriefcase(){
+		hasBriefcase = true;
+	}
+	
+	/**
 	 * This method will allow other parts of the game to know if the room has
 	 * the briefcase.
 	 * 
-	 * @return
+	 * @return hasBriefcase
 	 */
 	public boolean HasBriefcase(){
 		return hasBriefcase;
