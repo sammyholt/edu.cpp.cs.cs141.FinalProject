@@ -13,6 +13,11 @@ import java.util.Random;
 public class Grid {
 	
 	/**
+	 * The board size for which the square dimensions of the board should be.
+	 */
+	public static final int boardSize = 9;
+	
+	/**
 	 * This string represents an {@link #emptySpace} on the board.
 	 */
 	String emptySpace = " ";
@@ -21,7 +26,7 @@ public class Grid {
 	 * This array is the 
 	 * representation of the main game board.
 	 */
-	GridItem[][] board = new GridItem[9][9];
+	GridItem[][] board = new GridItem[boardSize][boardSize];
 	
 	/**
 	 * The default constructor for the grid.
@@ -55,6 +60,14 @@ public class Grid {
 		board[0][0] = player;
 		// place the rooms equally apart
 		board = placeRooms(board, rooms, 2, 1);
+		// place the ninjas randomly at least the minimum distance away from player
+		board = placeNinjas(board, ninjas, 3);
+		// place the items where there are free spaces
+		board = placeItems(board, items);
+		// place the empty spaces to finish initialization
+		board = placeEmptySpace(board);
+		
+		
 	}
 	
 	/**
@@ -74,6 +87,95 @@ public class Grid {
 			for(int column = 2; column < board[0].length - 1; column += (columnSpacing + 1)){
 				board[row][column] = rooms[counter];
 				counter++;
+			}
+		}
+		return board;
+	}
+	
+	/**
+	 * This method will place the ninjas on the board.  It will start
+	 * looking for spaces to place ninjas past the specified minimum distance.
+	 * A ninja cannot be placed if there is something already on the space.
+	 * 
+	 * @param board
+	 * @param ninjas
+	 * @param minDistance
+	 * @return board
+	 */
+	public GridItem[][] placeNinjas(GridItem[][] board, Ninja[] ninjas, int minDistance){
+		int randomX = 0;
+		int randomY = 0;
+		boolean spaceTaken = false;
+		
+		// loop through the ninja array to place them
+		for(Ninja n : ninjas){
+			do{
+				// get a random x and y coordinate to try to place the ninja
+				randomX = getRandomInt(minDistance, boardSize - 1);
+				randomY = getRandomInt(minDistance, boardSize - 1);
+				
+				// if something is already on the space, keep generating random coordinates
+				// else, place the ninja at that coordinate
+				if(board[randomX][randomY] !=  null){
+					spaceTaken = true;
+				}else{
+					board[randomX][randomY] = n;
+					spaceTaken = false;
+				}
+			}while(spaceTaken);
+		}
+		
+		return board;
+	}
+	
+	/**
+	 * This method will place the items on the board. An item will not be placed
+	 * if an item is already on the space.
+	 * 
+	 * @param board
+	 * @param items
+	 * @return board
+	 */
+	public GridItem[][] placeItems(GridItem[][] board, Item[] items){
+		int randomX = 0;
+		int randomY = 0;
+		boolean spaceTaken = false;
+		
+		// loop through the items array to place them
+		for(Item i : items){
+			do{
+				// get a random x and y coordinate to try to place the item
+				randomX = getRandomInt(0, boardSize - 1);
+				randomY = getRandomInt(0, boardSize - 1);
+				
+				// if something is already on the space, keep generating random coordinates
+				// else, place the item at that coordinate
+				if(board[randomX][randomY] !=  null){
+					spaceTaken = true;
+				}else{
+					board[randomX][randomY] = i;
+					spaceTaken = false;
+				}
+			}while(spaceTaken);
+		}
+		
+		return board;
+	}
+	
+	/**
+	 * This method will place the items on the board. An item will not be placed
+	 * if an item is already on the space.
+	 * 
+	 * @param board
+	 * @param items
+	 * @return board
+	 */
+	public GridItem[][] placeEmptySpace(GridItem[][] board){
+		for(int row = 0; row < board.length; row++){
+			for(int column = 0; column < board[0].length; column++){
+				if(board[row][column] ==  null){
+					board[row][column] = new EmptySpace();
+				}
 			}
 		}
 		return board;
@@ -149,11 +251,94 @@ public class Grid {
 	}
 	
 	/**
-	 * This method returns a string representation of the grid.
+	 * This method will return the string representation
+	 * of the item in order to print it on the board.
+	 * 
+	 * @param item
+	 * @return s - 
+	 * String representation of item.
+	 */
+	public String getClassStringRepresentation(GridItem item){
+		String s = null;
+		String className = item.getClass().getSimpleName();
+		
+		switch(className){
+		case "Player":
+			s = "P";
+			break;
+		case "EmptySpace":
+			s = " ";
+			break;
+		case "Room":
+			Room room = (Room)item;
+			if(room.HasBriefcase()){
+				s = "B";
+			}else{
+				s = "R";
+			}
+			break;
+		case "Ninja":
+			s = "N";
+			break;
+		case "Bullet":
+			s = "U";
+			break;
+		case "Invincibility":
+			s = "I";
+			break;
+		case "Radar":
+			s = "D";
+			break;
+		default:
+			s = " ERROR ";
+			break;
+		}
+		return s;
+	}
+	
+	/**
+	 * This method returns a two-dimensional string
+	 * representation of the board.
+	 * 
+	 * @return boardString - 
+	 * A two dimensional array of strings which represent the board.
+	 */
+	public String[][] boardString(){
+		String[][] returnString = new String[boardSize][boardSize];
+		String className = null;
+		for(int row = 0; row < board.length; row++){
+			for(int column = 0; column < board[0].length; column++){
+				// if space is null, represent as empty
+				// else give it the class name
+				if(board[row][column].getClass() == null){
+					className = " ";
+				}else{
+					className = getClassStringRepresentation(board[row][column]);
+				}
+				returnString[row][column] = " [ " + className + " ] ";
+			}
+		}
+		return returnString;
+	}
+	
+	/**
+	 * This allows the board to be printed by simply printing out the board object.
+	 * 
+	 * @return String representation of board.
 	 */
 	@Override
 	public String toString(){
-		return null;
+		String s = "";
+		
+		String[][] boardString = boardString();
+		for(int row = boardString.length - 1; row >= 0; row--){
+			for(int column = 0; column < boardString[0].length; column++){
+				s += boardString[row][column];
+			}
+			s += "\n";
+		}
+		
+		return s;
 	}
 	
 	
