@@ -11,6 +11,11 @@ package edu.cpp.cs.cs141.FinalProject;
 public class Grid {
 	
 	/**
+	 * This string represents an {@link #emptySpace} on the board.
+	 */
+	String emptySpace = " ";
+	
+	/**
 	 * This array is the 
 	 * visual representation of the board.
 	 */
