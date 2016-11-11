@@ -18,15 +18,10 @@ public class Grid {
 	public static final int boardSize = 9;
 	
 	/**
-	 * This string represents an {@link #emptySpace} on the board.
-	 */
-	String emptySpace = " ";
-	
-	/**
 	 * This array is the 
 	 * representation of the main game board.
 	 */
-	GridItem[][] board = new GridItem[boardSize][boardSize];
+	private GridItem[][] board = new GridItem[boardSize][boardSize];
 	
 	/**
 	 * The default constructor for the grid.
