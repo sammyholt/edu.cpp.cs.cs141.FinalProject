@@ -18,25 +18,58 @@ public class Grid {
 	public static final int boardSize = 9;
 	
 	/**
+	 * This array represents the rooms
+	 * on the board.
+	 */
+	private Room[] rooms = generateRooms(9);
+	
+	/**
+	 * This array represents the ninjas
+	 * on the board.
+	 */
+	private Ninja[] ninjas = generateNinjas(6);
+	
+	/**
+	 * This array represents the items on the board.
+	 */
+	private Item[] items = generateItems();
+	
+	/**
+	 * This field represents the player in the game.
+	 */
+	private Player player = new Player();
+	
+	/**
 	 * This array is the 
 	 * representation of the main game board.
 	 */
 	private GridItem[][] board = new GridItem[boardSize][boardSize];
 	
 	/**
-	 * The default constructor for the grid.
+	 * The default constructor for the grid.  This will run
+	 * the {@link #initializeGrid()} method in order to place
+	 * all the {@link GridItems} on the {@link Grid}.
 	 */
 	public Grid(){
-		
+		initializeGrid();
 	}
 	
 	/**
-	 * This method will return the room number of the briefcase for the current room.
+	 * This method will return the index of the rooms array where the briefcase was found.
+	 * If the method returns -1, then the briefcase was not found.
 	 * 
 	 * @return roomNumber
 	 */
 	public int briefCaseRoomNumber(){
-		return 0;
+		int number = -1;
+		int counter = 0;
+		for(Room r : rooms){
+			if(r.HasBriefcase()){
+				number = counter;
+			}
+			counter++;
+		}
+		return number;
 	}
 	
 	/**
@@ -46,11 +79,6 @@ public class Grid {
 	 * since there are no passed arguments.
 	 */
 	public void initializeGrid(){
-		Room[] rooms = generateRooms(9);
-		Ninja[] ninjas = generateNinjas(6);
-		Item[] items = generateItems();
-		Player player = new Player();
-		
 		// initialize player in bottom left
 		board[0][0] = player;
 		// place the rooms equally apart
@@ -61,8 +89,6 @@ public class Grid {
 		board = placeItems(board, items);
 		// place the empty spaces to finish initialization
 		board = placeEmptySpace(board);
-		
-		
 	}
 	
 	/**
