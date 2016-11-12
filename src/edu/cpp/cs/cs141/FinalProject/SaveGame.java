@@ -10,6 +10,7 @@ import java.io.Serializable;
  *
  */
 
-public class SaveGame implements Serializable {
-
+public class SaveGame implements Serializable 
+{
+	//Test commit
 }
