@@ -10,7 +10,7 @@ package edu.cpp.cs.cs141.FinalProject;
  * @author Victor Yuen
  *
  */
-public class Ninja extends ActiveAgent {
+public class Ninja extends ActiveAgent implements Serializable {
   
   /**
 	 * This represents the status of the Ninja.
