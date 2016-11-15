@@ -18,6 +18,11 @@ public class Grid {
 	public static final int boardSize = 9;
 	
 	/**
+	 * This flag determines if the grid is in debug mode or not.
+	 */
+	private boolean debugMode;
+	
+	/**
 	 * This array represents the rooms
 	 * on the board.
 	 */
@@ -51,7 +56,28 @@ public class Grid {
 	 * all the {@link GridItems} on the {@link Grid}.
 	 */
 	public Grid(){
+		debugMode = false;
 		initializeGrid();
+	}
+	
+	/**
+	 * This constructor for the grid allows the {@link #debugMode} to be passed. This will run
+	 * the {@link #initializeGrid()} method in order to place
+	 * all the {@link GridItems} on the {@link Grid}.
+	 */
+	public Grid(boolean debug){
+		debugMode = debug;
+		initializeGrid();
+	}
+	
+	/**
+	 * This method allows for the {@link #debugMode} of the {@link Grid} to be changed
+	 * by passing a boolean value.
+	 * 
+	 * @param debug
+	 */
+	public void setDebugMode(boolean debug){
+		debugMode = debug;
 	}
 	
 	/**
@@ -82,13 +108,34 @@ public class Grid {
 		// initialize player in bottom left
 		board[0][0] = player;
 		// place the rooms equally apart
-		board = placeRooms(board, rooms, 2, 1);
+		board = placeRooms(board, rooms);
 		// place the ninjas randomly at least the minimum distance away from player
 		board = placeNinjas(board, ninjas, 3);
 		// place the items where there are free spaces
 		board = placeItems(board, items);
 		// place the empty spaces to finish initialization
 		board = placeEmptySpace(board);
+	}
+	
+	/**
+	 * This method will place the rooms on the board.  It will space
+	 * place the rooms in the centers of the nine 3x3 grids.
+	 * 
+	 * @param board
+	 * @param rooms
+	 * @return board
+	 */
+	public GridItem[][] placeRooms(GridItem[][] board, Room[] rooms){
+		board[1][1] = rooms[0];
+		board[1][4] = rooms[1];
+		board[1][7] = rooms[2];
+		board[4][1] = rooms[3];
+		board[4][4] = rooms[4];
+		board[4][7] = rooms[5];
+		board[7][1] = rooms[3];
+		board[7][4] = rooms[4];
+		board[7][7] = rooms[5];
+		return board;
 	}
 	
 	/**
@@ -273,16 +320,42 @@ public class Grid {
 	
 	/**
 	 * This method will return the string representation
-	 * of the item in order to print it on the board.
+	 * of the item in order to print it on the board. If {@link #debugMode}
+	 * is on, all spaces will be visible, else it will show only the player and
+	 * rooms on initialization.
 	 * 
 	 * @param item
+	 * @param debug
 	 * @return s - 
 	 * String representation of item.
 	 */
-	public String getClassStringRepresentation(GridItem item){
+	public String getClassStringRepresentation(GridItem item, boolean debug){
 		String s = null;
 		String className = item.getClass().getSimpleName();
 		
+		if(debug){
+			s = letterFromClassName(item, className);
+		}else{
+			if(className.equals("Player")){
+				s = letterFromClassName(item, className);
+			}else if(className.equals("Room")){
+				s = "R";
+			}else{
+				s = " ";
+			}
+		}
+		return s;
+	}
+	
+	/**
+	 * This method will return the letter representation of the space on the Grid.
+	 * 
+	 * @param item
+	 * @param className
+	 * @return letterRepresentation
+	 */
+	public String letterFromClassName(GridItem item, String className){
+		String s = null;
 		switch(className){
 		case "Player":
 			s = "P";
@@ -334,7 +407,7 @@ public class Grid {
 				if(board[row][column].getClass() == null){
 					className = " ";
 				}else{
-					className = getClassStringRepresentation(board[row][column]);
+					className = getClassStringRepresentation(board[row][column], debugMode);
 				}
 				returnString[row][column] = " [ " + className + " ] ";
 			}
