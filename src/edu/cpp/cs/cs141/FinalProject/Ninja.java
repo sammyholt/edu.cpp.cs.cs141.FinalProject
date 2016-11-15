@@ -3,6 +3,8 @@
  */
 package edu.cpp.cs.cs141.FinalProject;
 
+import java.io.Serializable;
+
 /**
  * This class represents the main enemy in the game.  The ninja
  * should be able to move and interact with the player.
