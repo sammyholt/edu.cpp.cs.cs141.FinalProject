@@ -24,5 +24,6 @@ public class TestApp {
 			System.out.print("Enter 1 to generate a new grid, enter -1 to quit: ");
 			choice = keyboard.nextInt();
 		}while(choice != -1);
+		keyboard.close();
 	}
 }
