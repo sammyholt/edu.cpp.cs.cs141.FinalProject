@@ -103,5 +103,4 @@ public class Player extends ActiveAgent {
 		if (ammo > maxammo)
 			ammo = maxammo;
 	}
-
 }
