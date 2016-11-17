@@ -18,6 +18,11 @@ public class Grid {
 	public static final int boardSize = 9;
 	
 	/**
+	 * This string represents how empty space is represented on the board.
+	 */
+	public String emptySpace = "*";
+	
+	/**
 	 * This flag determines if the grid is in debug mode or not.
 	 */
 	private boolean debugMode;
@@ -96,6 +101,81 @@ public class Grid {
 			counter++;
 		}
 		return number;
+	}
+	
+	/**
+	 * This method will return the integer representation
+	 * of the index of the row of the {@link GridItem} array in which the
+	 * {@link Player} is located.
+	 * 
+	 * @return playerRow
+	 */
+	public int getPlayerRow(){
+		int playerRow = -1;
+		for(int row = 0; row < board.length; row++){
+			for(int column = 0; column < board[0].length; column++){
+				// if the item is a player
+				if(board[row][column].getClass().getSimpleName().equals("Player")){
+					playerRow = row;
+				}
+			}
+		}
+		return playerRow;
+	}
+	
+	/**
+	 * This method will return the integer representation
+	 * of the index of the column of the {@link GridItem} array in which the
+	 * {@link Player} is located.
+	 * 
+	 * @return playerColumn
+	 */
+	public int getPlayerColumn(){
+		int playerColumn = -1;
+		for(int row = 0; row < board.length; row++){
+			for(int column = 0; column < board[0].length; column++){
+				// if the item is a player
+				if(board[row][column].getClass().getSimpleName().equals("Player")){
+					playerColumn = column;
+				}
+			}
+		}
+		return playerColumn;
+	}
+	
+	/**
+	 * This method will return true if the
+	 * index is in range of the {@link Player}.  In range
+	 * of the {@link Player} is defined as one above, one to the right,
+	 * one to the left, or one below.
+	 * 
+	 * @param row
+	 * @param column
+	 * @return isInRangeOfPlayer
+	 */
+	public boolean isInRangeOfPlayer(int row, int column){
+		boolean isInRangeOfPlayer = false;
+		
+		if((row == getPlayerRow()) && (column == getPlayerColumn())){
+			// is the player, technically true
+			isInRangeOfPlayer = true;
+		}else if((row == getPlayerRow()) && (column == getPlayerColumn() + 1)){
+			// one to the right of the player
+			isInRangeOfPlayer = true;
+		}else if((row == getPlayerRow()) && (column == getPlayerColumn() - 1)){
+			// one to the left of the player
+			isInRangeOfPlayer = true;
+		}else if((row == getPlayerRow() + 1) && (column == getPlayerColumn())){
+			// one above player
+			isInRangeOfPlayer = true;
+		}else if((row == getPlayerRow() - 1) && (column == getPlayerColumn())){
+			// one below player
+			isInRangeOfPlayer = true;
+		}else{
+			// not in cross range of player
+			isInRangeOfPlayer = false;
+		}
+		return isInRangeOfPlayer;
 	}
 	
 	/**
@@ -321,28 +401,42 @@ public class Grid {
 	/**
 	 * This method will return the string representation
 	 * of the item in order to print it on the board. If {@link #debugMode}
-	 * is on, all spaces will be visible, else it will show only the player and
-	 * rooms on initialization.
+	 * is on, all spaces will be visible, else it will show only the {@link Player} and
+	 * rooms on initialization.  In non-debug mode, if the {@link GridItem} {@link #isInRangeOfPlayer()},
+	 * it will still be visible no matter what.
+	 * 
 	 * 
 	 * @param item
 	 * @param debug
 	 * @return s - 
 	 * String representation of item.
 	 */
-	public String getClassStringRepresentation(GridItem item, boolean debug){
+	public String getClassStringRepresentation(GridItem item, boolean debug, boolean inRange){
 		String s = null;
 		String className = item.getClass().getSimpleName();
 		
 		if(debug){
 			s = letterFromClassName(item, className);
 		}else{
-			if(className.equals("Player")){
+			// if the player is in range of the space,
+			// show it no matter what
+			if(inRange){
 				s = letterFromClassName(item, className);
-			}else if(className.equals("Room")){
-				s = "R";
+				// want to represent visible empty
+				// space differently than normal empty space
+				if(s.equals(emptySpace)){
+					s = " ";
+				}
 			}else{
-				s = " ";
+				if(className.equals("Player")){
+					s = letterFromClassName(item, className);
+				}else if(className.equals("Room")){
+					s = "R";
+				}else{
+					s = emptySpace;
+				}
 			}
+			
 		}
 		return s;
 	}
@@ -361,7 +455,7 @@ public class Grid {
 			s = "P";
 			break;
 		case "EmptySpace":
-			s = " ";
+			s = emptySpace;
 			break;
 		case "Room":
 			Room room = (Room)item;
@@ -407,7 +501,7 @@ public class Grid {
 				if(board[row][column].getClass() == null){
 					className = " ";
 				}else{
-					className = getClassStringRepresentation(board[row][column], debugMode);
+					className = getClassStringRepresentation(board[row][column], debugMode, isInRangeOfPlayer(row, column));
 				}
 				returnString[row][column] = " [ " + className + " ] ";
 			}
