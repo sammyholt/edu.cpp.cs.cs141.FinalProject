@@ -18,6 +18,11 @@ public class Grid {
 	public static final int boardSize = 9;
 	
 	/**
+	 * This string represents how empty space is represented on the board.
+	 */
+	public String emptySpace = "*";
+	
+	/**
 	 * This flag determines if the grid is in debug mode or not.
 	 */
 	private boolean debugMode;
@@ -417,13 +422,18 @@ public class Grid {
 			// show it no matter what
 			if(inRange){
 				s = letterFromClassName(item, className);
+				// want to represent visible empty
+				// space differently than normal empty space
+				if(s.equals(emptySpace)){
+					s = " ";
+				}
 			}else{
 				if(className.equals("Player")){
 					s = letterFromClassName(item, className);
 				}else if(className.equals("Room")){
 					s = "R";
 				}else{
-					s = " ";
+					s = emptySpace;
 				}
 			}
 			
@@ -445,7 +455,7 @@ public class Grid {
 			s = "P";
 			break;
 		case "EmptySpace":
-			s = " ";
+			s = emptySpace;
 			break;
 		case "Room":
 			Room room = (Room)item;
