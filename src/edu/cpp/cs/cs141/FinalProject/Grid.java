@@ -431,7 +431,10 @@ public class Grid {
 				if(className.equals("Player")){
 					s = letterFromClassName(item, className);
 				}else if(className.equals("Room")){
-					s = "R";
+					//if(player.radarIsActive())
+					//	s = "B";
+					//else
+						s = "R";
 				}else{
 					s = emptySpace;
 				}
