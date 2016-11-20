@@ -212,31 +212,9 @@ public class Grid {
 		board[4][1] = rooms[3];
 		board[4][4] = rooms[4];
 		board[4][7] = rooms[5];
-		board[7][1] = rooms[3];
-		board[7][4] = rooms[4];
-		board[7][7] = rooms[5];
-		return board;
-	}
-	
-	/**
-	 * This method will place the rooms on the board.  It will space
-	 * the rooms based on the provided values of columnSpacing and
-	 * rowSpacing.
-	 * 
-	 * @param board
-	 * @param rooms
-	 * @param rowSpacing
-	 * @param columnSpacing
-	 * @return board
-	 */
-	public GridItem[][] placeRooms(GridItem[][] board, Room[] rooms, int rowSpacing, int columnSpacing){
-		int counter = 0;
-		for(int row = 1; row < board.length - 1; row += (rowSpacing + 1)){
-			for(int column = 2; column < board[0].length - 1; column += (columnSpacing + 1)){
-				board[row][column] = rooms[counter];
-				counter++;
-			}
-		}
+		board[7][1] = rooms[6];
+		board[7][4] = rooms[7];
+		board[7][7] = rooms[8];
 		return board;
 	}
 	
@@ -338,6 +316,8 @@ public class Grid {
 	 * @return rooms
 	 */
 	public Room[] generateRooms(int amount){
+		int randomInt = 0;
+		
 		// Create and initialize an array of rooms
 		Room[] rooms = new Room[amount];
 		for(int i = 0; i < amount; i++){
@@ -346,7 +326,7 @@ public class Grid {
 		
 		// Generate a random int based on the amount of rooms
 		// and assign a briefcase to that room
-		int randomInt = getRandomInt(0, amount - 1);
+		randomInt = getRandomInt(0, amount - 1);
 		rooms[randomInt].giveBriefcase();
 		
 		return rooms;
@@ -412,7 +392,7 @@ public class Grid {
 	 * String representation of item.
 	 */
 	public String getClassStringRepresentation(GridItem item, boolean debug, boolean inRange){
-		String s = null;
+		String s = "";
 		String className = item.getClass().getSimpleName();
 		
 		if(debug){
@@ -449,17 +429,22 @@ public class Grid {
 	 * @return letterRepresentation
 	 */
 	public String letterFromClassName(GridItem item, String className){
-		String s = null;
+		String s = "";
+		Room room = null;
 		switch(className){
 		case "Player":
 			s = "P";
 			break;
 		case "EmptySpace":
-			s = emptySpace;
+			if(debugMode){
+				s = " ";
+			}else{
+				s = emptySpace;
+			}
 			break;
 		case "Room":
-			Room room = (Room)item;
-			if(room.HasBriefcase() && debugMode == true){
+			room = (Room)item;
+			if(room.HasBriefcase() && debugMode){
 				s = "B";
 			}else{
 				s = "R";
@@ -494,12 +479,14 @@ public class Grid {
 	public String[][] boardString(){
 		String[][] returnString = new String[boardSize][boardSize];
 		String className = null;
+		int roomCounter = 0;
+		Room room = null;
 		for(int row = 0; row < board.length; row++){
 			for(int column = 0; column < board[0].length; column++){
 				// if space is null, represent as empty
 				// else give it the class name
 				if(board[row][column].getClass() == null){
-					className = " ";
+					className = " ERROR ";
 				}else{
 					className = getClassStringRepresentation(board[row][column], debugMode, isInRangeOfPlayer(row, column));
 				}
