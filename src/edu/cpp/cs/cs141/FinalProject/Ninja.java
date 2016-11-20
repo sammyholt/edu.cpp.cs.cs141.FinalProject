@@ -24,5 +24,14 @@ public class Ninja extends ActiveAgent implements Serializable {
 	 */
 	private int lives = 1;
 	
-  
+	Ninja(){
+		alive = true;
+	}
+	public void kill(){
+		alive = false;
+	}
+	
+	public boolean getAlive(){
+		return alive;
+	}
 }

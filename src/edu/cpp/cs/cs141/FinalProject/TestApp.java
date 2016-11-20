@@ -10,15 +10,15 @@ import java.util.Scanner;
  */
 public class TestApp {
 	public static void main(String[] args){
-		GameEngine testengine = new GameEngine(false);
+		GameEngine testengine = new GameEngine(true);
 		Scanner keyboard = new Scanner(System.in);
 		
-		/*
+		
 		GridItem testspace;
 		String testspaceletter;
 		int ninjacounter = 0;
-		for(int i=0; i<9; i++){
-			for(int j=0; j<9; j++){
+		for(int i=0; i < 9; i++){
+			for(int j=0; j < 9; j++){
 				testspace = testengine.grid.board[i][j];
 				testspaceletter = testengine.grid.letterFromClassName(testspace, testspace.getClass().getSimpleName());
 				if(testspaceletter == "N")
@@ -28,17 +28,27 @@ public class TestApp {
 				}
 			}
 		}
-		*/
+		
 		
 		char movementchoice = 10;
 		do{
 			System.out.println(testengine.grid);
+			if(testengine.grid.player.hasBriefcase()){
+				System.out.println("Congrats you have the briefcase");
+			}
 			testengine.endOfTurnCleanUp();
 			movementchoice = keyboard.next().charAt(0);
 			System.out.println(testengine.playerMovement(movementchoice));
 			//for(int ninjanumber = 0; ninjanumber < testengine.ninjasalive; ninjanumber++)
 				//testengine.ninjaAI(0);
-			
+			if(movementchoice == 'f'){
+				if(testengine.playerShoots('w')){
+					System.out.println("You hit an enemy!");
+				}
+			}
+			for(int i = 0 ; i < testengine.ninjasalive ; i++){
+				System.out.println(testengine.grid.ninjas[i].getXCoordinate()+","+testengine.grid.ninjas[i].getYCoordinate());
+			}
 		}while( movementchoice != 'e');
 		
 		keyboard.close();

@@ -106,6 +106,12 @@ public class Player extends ActiveAgent {
 		ammo += inputammo;
 		if (ammo > maxammo)
 			ammo = maxammo;
+		if (ammo < 0)
+			ammo = 0;
+	}
+	
+	public boolean hasAmmo(){
+		return (ammo > 0) ? true : false;
 	}
 	
 	public boolean radarIsActive(){

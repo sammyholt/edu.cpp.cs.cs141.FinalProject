@@ -207,5 +207,42 @@ public class GameEngine {
 		grid.player.invinciblityUseOneTurn();
 	}
 	
-	
+	public boolean playerShoots(char directionofshot){
+		grid.player.setAmmo(-1);
+		int playerrow = grid.getPlayerRow(), playercolumn = grid.getPlayerColumn();
+		boolean ninjahit = false;
+		//TODO once hit, replace the gridspace with an empty space
+		//X is for rows		Y is for columns
+		
+		if(directionofshot == 'w' || directionofshot == 'W'){
+			//in the same column as player, check rows less than player's row
+			for(int i = 0 ; i < ninjasalive ; i++){
+				if(grid.ninjas[i].getYCoordinate() == playercolumn && grid.ninjas[i].getXCoordinate() > playerrow){
+					System.out.println("Found enemy in same column");
+					grid.board[grid.ninjas[i].getXCoordinate()][grid.ninjas[i].getYCoordinate()] = new EmptySpace();
+					ninjasalive --;
+					grid.ninjas[i].kill();
+					grid.ninjas[i].giveCoordinates(10, 10);
+					for(int q = 0 ; q < ninjasalive ; q++){
+						if(!grid.ninjas[q].getAlive()){
+							grid.ninjas[q] = grid.ninjas[q+1];
+						}
+					}
+					ninjahit = true;
+					break;
+				}
+			}
+		}else if(directionofshot == 'a' || directionofshot == 'A'){
+			//in the same row as player, check columns less than the player's column
+		}else if(directionofshot == 's' || directionofshot == 'S'){
+			//in the same column as player, check rows greater than player's row
+		}else{
+			//D
+			//in the same row as player, check columns greater than the player column
+		}
+		
+			
+		return ninjahit;
+		
+	}
 }
