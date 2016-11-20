@@ -37,7 +37,7 @@ public class Grid {
 	 * This array represents the ninjas
 	 * on the board.
 	 */
-	private Ninja[] ninjas = generateNinjas(6);
+	protected Ninja[] ninjas = generateNinjas(6);
 	
 	/**
 	 * This array represents the items on the board.
@@ -47,13 +47,13 @@ public class Grid {
 	/**
 	 * This field represents the player in the game.
 	 */
-	private Player player = new Player();
+	protected Player player = new Player();
 	
 	/**
 	 * This array is the 
 	 * representation of the main game board.
 	 */
-	private GridItem[][] board = new GridItem[boardSize][boardSize];
+	protected GridItem[][] board = new GridItem[boardSize][boardSize];
 	
 	/**
 	 * The default constructor for the grid.  This will run
