@@ -459,7 +459,7 @@ public class Grid {
 			break;
 		case "Room":
 			Room room = (Room)item;
-			if(room.HasBriefcase()){
+			if(room.HasBriefcase() && debugMode == true){
 				s = "B";
 			}else{
 				s = "R";
