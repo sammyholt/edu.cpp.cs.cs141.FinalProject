@@ -85,6 +85,13 @@ public class Grid {
 		debugMode = debug;
 	}
 	
+	/*
+	 * This method will return the current state of @param debugMode
+	 */
+	public boolean getDebugMode(){
+		return debugMode;
+	}
+	
 	/**
 	 * This method will return the index of the rooms array where the briefcase was found.
 	 * If the method returns -1, then the briefcase was not found.

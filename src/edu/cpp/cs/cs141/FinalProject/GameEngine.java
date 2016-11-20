@@ -79,7 +79,7 @@ public class GameEngine {
 		String targetgridspaceletter = grid.letterFromClassName(targetgridspace, targetgridspace.getClass().getSimpleName());
 		//Check if walking into room
 		if(targetgridspaceletter == "B" || targetgridspaceletter == "R"){
-			return playerChecksRoom(movementchoice, targetgridspaceletter);
+			return playerChecksRoom(movementchoice, targetgridspace);
 		}
 		//Walking into item "picks it up"
 		if(targetgridspaceletter == "D" || targetgridspaceletter == "I" || targetgridspaceletter == "U"){
@@ -97,14 +97,20 @@ public class GameEngine {
 		return "";
 	}
 	
-	public String playerChecksRoom(char movementchoice, String targetspaceletter){
+	public String playerChecksRoom(char movementchoice, GridItem targetgridspace){
 		if(movementchoice == 's' || movementchoice == 'S'){
-			if(targetspaceletter == "B"){
+			//TODO 
+			boolean originaldebugchoice = grid.getDebugMode();
+			grid.setDebugMode(true);
+			if(grid.letterFromClassName(targetgridspace, targetgridspace.getClass().getSimpleName()) == "B"){
 				grid.player.setBriefcase();
+				grid.setDebugMode(originaldebugchoice);
 				return "You found the briefcase!";
 			}
-			else
+			else{
+				grid.setDebugMode(originaldebugchoice);
 				return "You entered the room and found nothing";
+			}
 		}
 		else
 			return "You can only enter the room from the top";
@@ -200,4 +206,6 @@ public class GameEngine {
 		grid.player.radarUseOneTurn();
 		grid.player.invinciblityUseOneTurn();
 	}
+	
+	
 }
