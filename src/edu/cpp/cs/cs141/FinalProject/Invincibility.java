@@ -11,6 +11,12 @@ package edu.cpp.cs.cs141.FinalProject;
 
 public class Invincibility extends Item {
 	
-	
+	/*
+	 * Default constructor
+	 */
+	Invincibility(){
+		//Calls the super constructor to give 5 maximum turns
+		super(5);
+	}
 
 }

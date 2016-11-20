@@ -11,4 +11,9 @@ package edu.cpp.cs.cs141.FinalProject;
 
 public class Bullet extends Item {
 
+	//Default constructor for the bullet
+	Bullet(){
+		//0 is passed because the bullet does not need to be active for more than 1 turn
+		super(0);
+	}
 }
