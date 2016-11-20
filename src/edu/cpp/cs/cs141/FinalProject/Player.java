@@ -38,6 +38,9 @@ public class Player extends ActiveAgent {
 	 */
 	private final int maxammo = 1;
 	
+	private Radar playerradar;
+	
+	private Invincibility playerinvincibility;
 	
 	/**
 	 * The constructor for the Player class which initializes the field variables.
@@ -48,7 +51,8 @@ public class Player extends ActiveAgent {
 		lives = 3;
 		briefcase = false;
 		ammo = 1;
-				
+		playerradar = new Radar();
+		playerinvincibility = new Invincibility();
 	}
 	
 	/**
@@ -102,5 +106,21 @@ public class Player extends ActiveAgent {
 		ammo += inputammo;
 		if (ammo > maxammo)
 			ammo = maxammo;
+	}
+	
+	public boolean radarIsActive(){
+		return playerradar.itemActive();
+	}
+	
+	public boolean invincibilityIsActive(){
+		return playerinvincibility.itemActive();
+	}
+	
+	public void pickUpRadar(){
+		playerradar.setActive();
+	}
+	
+	public void pickUpInvincibility(){
+		playerinvincibility.setActive();
 	}
 }
