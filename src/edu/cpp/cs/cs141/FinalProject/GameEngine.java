@@ -195,4 +195,9 @@ public class GameEngine {
 		}
 		
 	}
+	
+	public void endOfTurnCleanUp(){
+		grid.player.radarUseOneTurn();
+		grid.player.invinciblityUseOneTurn();
+	}
 }

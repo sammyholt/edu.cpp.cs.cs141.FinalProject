@@ -33,10 +33,12 @@ public class TestApp {
 		char movementchoice = 10;
 		do{
 			System.out.println(testengine.grid);
+			testengine.endOfTurnCleanUp();
 			movementchoice = keyboard.next().charAt(0);
 			System.out.println(testengine.playerMovement(movementchoice));
 			//for(int ninjanumber = 0; ninjanumber < testengine.ninjasalive; ninjanumber++)
 				//testengine.ninjaAI(0);
+			
 		}while( movementchoice != 'e');
 		
 		keyboard.close();

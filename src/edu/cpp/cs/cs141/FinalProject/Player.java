@@ -123,4 +123,12 @@ public class Player extends ActiveAgent {
 	public void pickUpInvincibility(){
 		playerinvincibility.setActive();
 	}
+	
+	public void radarUseOneTurn(){
+		playerradar.setTurns();
+	}
+
+	public void invinciblityUseOneTurn(){
+		playerinvincibility.setTurns();
+	}
 }
