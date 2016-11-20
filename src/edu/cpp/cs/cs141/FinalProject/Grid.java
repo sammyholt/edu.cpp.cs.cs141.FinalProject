@@ -431,9 +431,15 @@ public class Grid {
 				if(className.equals("Player")){
 					s = letterFromClassName(item, className);
 				}else if(className.equals("Room")){
-					//if(player.radarIsActive())
-					//	s = "B";
-					//else
+					if(player.radarIsActive()){
+						Room room = (Room)item;
+						if(room.HasBriefcase()){
+							s = "B";
+						}else{
+							s = "R";
+						}
+					}
+					else
 						s = "R";
 				}else{
 					s = emptySpace;
