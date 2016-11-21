@@ -11,4 +11,14 @@ package edu.cpp.cs.cs141.FinalProject;
 
 public class Radar extends Item {
 
+	
+	/*
+	 * Constructor for radar that will give 1 maximum turn for usage
+	 */
+	public Radar()
+	{
+		//1 is passed to give 1 maximum turn
+		super(1);
+	}
+	
 }

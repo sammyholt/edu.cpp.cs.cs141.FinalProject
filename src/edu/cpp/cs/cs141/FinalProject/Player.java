@@ -3,6 +3,8 @@
  */
 package edu.cpp.cs.cs141.FinalProject;
 
+import java.io.Serializable;
+
 /**
  * This class represents the Player in the game.  The Player should
  * have attributes and methods that allow it to interact with the other
@@ -11,7 +13,7 @@ package edu.cpp.cs.cs141.FinalProject;
  * @author Justin Do
  *
  */
-public class Player extends ActiveAgent {
+public class Player extends ActiveAgent implements Serializable{
 	
 	/**
 	 * This represents the status of the Player.
@@ -38,6 +40,9 @@ public class Player extends ActiveAgent {
 	 */
 	private final int maxammo = 1;
 	
+	private Radar playerradar;
+	
+	private Invincibility playerinvincibility;
 	
 	/**
 	 * The constructor for the Player class which initializes the field variables.
@@ -48,7 +53,8 @@ public class Player extends ActiveAgent {
 		lives = 3;
 		briefcase = false;
 		ammo = 1;
-				
+		playerradar = new Radar();
+		playerinvincibility = new Invincibility();
 	}
 	
 	/**
@@ -102,6 +108,35 @@ public class Player extends ActiveAgent {
 		ammo += inputammo;
 		if (ammo > maxammo)
 			ammo = maxammo;
+		if (ammo < 0)
+			ammo = 0;
+	}
+	
+	public boolean hasAmmo(){
+		return (ammo > 0) ? true : false;
+	}
+	
+	public boolean radarIsActive(){
+		return playerradar.itemActive();
+	}
+	
+	public boolean invincibilityIsActive(){
+		return playerinvincibility.itemActive();
+	}
+	
+	public void pickUpRadar(){
+		playerradar.setActive();
+	}
+	
+	public void pickUpInvincibility(){
+		playerinvincibility.setActive();
+	}
+	
+	public void radarUseOneTurn(){
+		playerradar.setTurns();
 	}
 
+	public void invinciblityUseOneTurn(){
+		playerinvincibility.setTurns();
+	}
 }

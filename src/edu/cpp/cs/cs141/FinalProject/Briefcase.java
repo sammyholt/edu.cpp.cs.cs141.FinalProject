@@ -18,8 +18,12 @@ public class Briefcase extends Item{
 	/**
 	 * The default constructor for the briefcase.
 	 */
-	public Briefcase(){
-		
+	public Briefcase(int inputroomnumber){
+		//Zero is passed because the player does not need the briefcase for over 1 turn
+		super(0);
 	}
 
+	public int getRoomNumber(){
+		return roomNumber;
+	}
 }

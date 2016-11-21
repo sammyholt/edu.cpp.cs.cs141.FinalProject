@@ -13,16 +13,48 @@ import java.io.Serializable;
  *
  */
 public class Ninja extends ActiveAgent implements Serializable {
+	
+	/**
+	 * This field represents the total amount of created {@link Ninja}s.
+	 * It allows for unique identification ({@link #uniqueId}) of new {@link Ninja}s and also
+	 * a quick tool to see how many {@link Ninja}s are in the game.
+	 */
+	public static int totalNinjas = 0;
+	
+	/**
+	 * This field represents a unique identifier for the ninjas.
+	 * Each ninja should be given an {@link #uniqueId} when initialized.
+	 */
+	private int uniqueId;
   
-  /**
-	 * This represents the status of the Ninja.
+	/**
+	 * This represents the status of life of the {@link Ninja}.
 	 */
 	private boolean alive;
 	
 	/**
-	 * This represents the number of lives the ninja has left which is by default 1.
+	 * The default constructor for the {@link Ninja}.
 	 */
-	private int lives = 1;
+	public Ninja(){
+		uniqueId = totalNinjas++;
+		alive = true;
+		
+	}
 	
-  
+	/**
+	 * This method will return the integer form of the 
+	 * {@link #uniqueId} of the {@link Ninja}.
+	 * @return {@link #uniqueId}
+	 */
+	public int getUniqueId(){
+		return uniqueId;
+	}
+	
+	public void kill(){
+		alive = false;
+	}
+	
+	public boolean getAlive(){
+		return alive;
+	}
 }
