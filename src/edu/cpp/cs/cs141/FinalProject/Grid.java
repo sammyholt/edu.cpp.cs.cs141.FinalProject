@@ -1,3 +1,24 @@
+/**
+ * CS 141: Intro to Programming and Problem Solving
+ * Professor: Edwin Rodríguez
+ *
+ * Final Project: Spy Game
+ *
+ * The game takes place inside a building which will be represented as a grid of 81 squares, 
+ * every square representing a possible position for different entities in the game (player's avatar, enemies, power-ups), 
+ * with the exception of 9 special squares which represent rooms, and are equally distributed on the grid.
+ * The player's character is a spy that is tasked with retrieving a briefcase containing classified enemy documents, 
+ * which is located in one of the rooms. 
+ * 
+ * Team Choryboys 
+ *   Robert Gil
+ *   Sammy Holt
+ *   Chory Gruta
+ *   Victor Yuen
+ *   Justin Do
+ *   Matthew McPartland
+ */
+
 package edu.cpp.cs.cs141.FinalProject;
 
 import java.util.Random;
@@ -13,45 +34,50 @@ import java.util.Random;
 public class Grid {
 	
 	/**
-	 * The board size for which the square dimensions of the board should be.
+	 * This field represents the {@link #boardSize} for which the square dimensions of the {@link Grid} should be.
 	 */
 	public static final int boardSize = 9;
 	
 	/**
-	 * This string represents how empty space is represented on the board.
+	 * This field is a string representation of empty space on the {@link Grid}.
 	 */
 	public String emptySpace = "*";
 	
 	/**
-	 * This flag determines if the grid is in debug mode or not.
+	 * This flag determines if the {@link Grid} is in {@link #debugMode} or not.
 	 */
 	private boolean debugMode;
 	
 	/**
-	 * This array represents the rooms
-	 * on the board.
+	 * This field represents an array of {@link Room}s
+	 * on the {@link Grid}.
 	 */
 	private Room[] rooms = generateRooms(9);
 	
 	/**
-	 * This array represents the ninjas
-	 * on the board.
+	 * This field represents an array of {@link Ninja}s
+	 * on the {@link Grid}.
 	 */
 	protected Ninja[] ninjas = generateNinjas(6);
 	
 	/**
-	 * This array represents the items on the board.
+	 * This field represents an array of {@link Item}s 
+	 * on the {@link Grid}.
 	 */
 	private Item[] items = generateItems();
 	
 	/**
-	 * This field represents the player in the game.
+	 * This field represents the {@link Player} on
+	 * the {@link Grid}.
 	 */
 	protected Player player = new Player();
 	
 	/**
-	 * This array is the 
-	 * representation of the main game board.
+	 * This field is a two-dimensional array
+	 * representation of the {@link Grid}.  It
+	 * is an array of {@link GridItem}s which is
+	 * an abstract class that all items on the {@link Grid}
+	 * must implement.
 	 */
 	protected GridItem[][] board = new GridItem[boardSize][boardSize];
 	
@@ -85,15 +111,18 @@ public class Grid {
 		debugMode = debug;
 	}
 	
-	/*
-	 * This method will return the current state of @param debugMode
+	/**
+	 * This method will return the current state of the
+	 * {@link #debugMode} of the {@link Grid}.
+	 * 
+	 * @return debugMode
 	 */
 	public boolean getDebugMode(){
 		return debugMode;
 	}
 	
 	/**
-	 * This method will return the index of the rooms array where the briefcase was found.
+	 * This method will return the index of the {@link Room}s array where the briefcase was found.
 	 * If the method returns -1, then the briefcase was not found.
 	 * 
 	 * @return roomNumber
@@ -112,7 +141,7 @@ public class Grid {
 	
 	/**
 	 * This method will return true if the passed row and 
-	 * column are in bounds of the board.  Otherwise, 
+	 * column are in bounds of the {@link Grid}.  Otherwise, 
 	 * it will return false.
 	 * 
 	 * @param row
@@ -208,7 +237,7 @@ public class Grid {
 	
 	/**
 	 * This method will initialize the grid with no arguments.
-	 * It will place all the rooms, ninjas, items, and the player.
+	 * It will place all the {@link Room}s, {@link Ninja}s, {@link Item}s, and the {@link Player}.
 	 * It will generate the positions of these {@link GridItem}s randomly
 	 * since there are no passed arguments.
 	 */
@@ -226,8 +255,8 @@ public class Grid {
 	}
 	
 	/**
-	 * This method will place the rooms on the board.  It will space
-	 * place the rooms in the centers of the nine 3x3 grids.
+	 * This method will place the {@link Room}s on the {@link #board}.  It will space
+	 * place the {@link Room}s in the centers of the nine 3x3 areas.
 	 * 
 	 * @param board
 	 * @param rooms
@@ -247,9 +276,9 @@ public class Grid {
 	}
 	
 	/**
-	 * This method will place the ninjas on the board.  It will start
-	 * looking for spaces to place ninjas past the specified minimum distance.
-	 * A ninja cannot be placed if there is something already on the space.
+	 * This method will place the {@link Ninja}s on the {@link #board}.  It will start
+	 * looking for spaces to place {@link Ninja}s past the specified minimum distance.
+	 * A {@link Ninja} cannot be placed if there is something already on the space.
 	 * 
 	 * @param board
 	 * @param ninjas
@@ -283,7 +312,7 @@ public class Grid {
 	}
 	
 	/**
-	 * This method will place the items on the board. An item will not be placed
+	 * This method will place the {@link Item}s on the {@link #board}. An item will not be placed
 	 * if an item is already on the space.
 	 * 
 	 * @param board
@@ -317,8 +346,8 @@ public class Grid {
 	}
 	
 	/**
-	 * This method will place the items on the board. An item will not be placed
-	 * if an item is already on the space.
+	 * This method will place the items on the {@link #board}. An {@link Item} will not be placed
+	 * if anything is already on the space.
 	 * 
 	 * @param board
 	 * @param items
@@ -336,7 +365,7 @@ public class Grid {
 	}
 	
 	/**
-	 * Generates an array of rooms and 
+	 * This method generates an array of {@link Room}s and 
 	 * randomly assigns the briefcase to one of the 
 	 * rooms.
 	 * 
@@ -361,7 +390,7 @@ public class Grid {
 	}
 	
 	/**
-	 * Generates an array of ninjas.
+	 * This method generates an array of {@link Ninja}s.
 	 * 
 	 * @param amount
 	 * @return ninjas
@@ -377,7 +406,7 @@ public class Grid {
 	}
 	
 	/**
-	 * Generates an array of items.
+	 * This method generates an array of {@link Item}s.
 	 * 
 	 * @return items
 	 */
@@ -408,7 +437,7 @@ public class Grid {
 	
 	/**
 	 * This method will return the string representation
-	 * of the item in order to print it on the board. If {@link #debugMode}
+	 * of the {@link GridItem} in order to print it on the {@link #board}. If {@link #debugMode}
 	 * is on, all spaces will be visible, else it will show only the {@link Player} and
 	 * rooms on initialization.  In non-debug mode, if the {@link GridItem} {@link #isInRangeOfPlayer()},
 	 * it will still be visible no matter what.
@@ -459,7 +488,7 @@ public class Grid {
 	}
 	
 	/**
-	 * This method will return the letter representation of the space on the Grid.
+	 * This method will return the letter representation of the space on the {@link #board}.
 	 * 
 	 * @param item
 	 * @param className
@@ -508,7 +537,7 @@ public class Grid {
 	
 	/**
 	 * This method returns a two-dimensional string
-	 * representation of the board.
+	 * representation of the {@link #board}.
 	 * 
 	 * @return boardString - 
 	 * A two dimensional array of strings which represent the board.
@@ -534,7 +563,7 @@ public class Grid {
 	}
 	
 	/**
-	 * This allows the board to be printed by simply printing out the board object.
+	 * This allows the {@link #board} to be printed by simply.
 	 * 
 	 * @return String representation of board.
 	 */
