@@ -208,6 +208,8 @@ public class GameEngine {
 	}
 	
 	public boolean playerShoots(char directionofshot){
+		if(!grid.player.hasAmmo())
+			return false;
 		grid.player.setAmmo(-1);
 		int playerrow = grid.getPlayerRow(), playercolumn = grid.getPlayerColumn();
 		boolean ninjahit = false;
