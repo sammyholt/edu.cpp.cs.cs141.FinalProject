@@ -12,15 +12,15 @@ public abstract class GridItem {
 	
 	/**
 	 * This field represents the current
-	 * x-coordinate of the {@link GridItem}.
+	 * row of the {@link GridItem}.
 	 */
-	private int xCoordinate;
+	private int row;
 	
 	/**
 	 * This field represents the current
-	 * y-coordinate of the {@link GridItem}.
+	 * column of the {@link GridItem}.
 	 */
-	private int yCoordinate;
+	private int column;
 	
 	/**
 	 * This method will allow for the modification
@@ -29,8 +29,8 @@ public abstract class GridItem {
 	 * @param y
 	 */
 	public void giveCoordinates(int x, int y){
-		xCoordinate = x;
-		yCoordinate = y;
+		row = x;
+		column = y;
 	}
 	
 	/**
@@ -38,7 +38,7 @@ public abstract class GridItem {
 	 * @return xCoordinate
 	 */
 	public int getXCoordinate(){
-		return xCoordinate;
+		return row;
 	}
 	
 	/**
@@ -46,7 +46,7 @@ public abstract class GridItem {
 	 * @return yCoordinate
 	 */
 	public int getYCoordinate(){
-		return yCoordinate;
+		return column;
 	}
 
 }
