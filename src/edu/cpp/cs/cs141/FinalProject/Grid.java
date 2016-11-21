@@ -111,6 +111,27 @@ public class Grid {
 	}
 	
 	/**
+	 * This method will return true if the passed row and 
+	 * column are in bounds of the board.  Otherwise, 
+	 * it will return false.
+	 * 
+	 * @param row
+	 * @param column
+	 * @return inBounds
+	 */
+	public boolean inBounds(int row, int column){
+		boolean inBounds = false;
+		if(row >= 0 && row < boardSize){
+			// row is in bounds
+			if(column >= 0 && column < boardSize){
+				// column is in bounds
+				inBounds = true;
+			}
+		}
+		return inBounds;
+	}
+	
+	/**
 	 * This method will return the integer representation
 	 * of the index of the row of the {@link GridItem} array in which the
 	 * {@link Player} is located.
