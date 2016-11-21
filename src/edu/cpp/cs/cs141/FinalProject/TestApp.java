@@ -13,22 +13,7 @@ public class TestApp {
 		GameEngine testengine = new GameEngine(true);
 		Scanner keyboard = new Scanner(System.in);
 		
-		
-		GridItem testspace;
-		String testspaceletter;
-		int ninjacounter = 0;
-		for(int i=0; i < 9; i++){
-			for(int j=0; j < 9; j++){
-				testspace = testengine.grid.board[i][j];
-				testspaceletter = testengine.grid.letterFromClassName(testspace, testspace.getClass().getSimpleName());
-				if(testspaceletter == "N")
-				{
-					testengine.grid.ninjas[ninjacounter].giveCoordinates(i, j);
-					ninjacounter++;
-				}
-			}
-		}
-		
+		testengine.ninjaInit();
 		
 		char movementchoice = 10;
 		do{
@@ -46,6 +31,8 @@ public class TestApp {
 				if(testengine.playerShoots(movementchoice)){
 					System.out.println("You hit an enemy!");
 				}
+				else
+					System.out.println("You have no ammo");
 			}
 			for(int i = 0 ; i < testengine.ninjasalive ; i++){
 				System.out.println(testengine.grid.ninjas[i].getXCoordinate()+","+testengine.grid.ninjas[i].getYCoordinate());
