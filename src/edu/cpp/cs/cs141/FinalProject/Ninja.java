@@ -42,6 +42,7 @@ public class Ninja extends ActiveAgent implements Serializable {
 	 */
 	public Ninja(){
 		uniqueId = totalNinjas++;
+		alive = true;
 	}
 	
 	/**
@@ -53,11 +54,8 @@ public class Ninja extends ActiveAgent implements Serializable {
 		return uniqueId;
 	}
 	
-  
-	Ninja(){
-		alive = true;
-	}
 	public void kill(){
+		lives = 0;
 		alive = false;
 	}
 	
