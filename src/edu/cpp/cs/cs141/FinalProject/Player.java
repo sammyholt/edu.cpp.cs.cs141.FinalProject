@@ -3,6 +3,8 @@
  */
 package edu.cpp.cs.cs141.FinalProject;
 
+import java.io.Serializable;
+
 /**
  * This class represents the Player in the game.  The Player should
  * have attributes and methods that allow it to interact with the other
@@ -11,7 +13,7 @@ package edu.cpp.cs.cs141.FinalProject;
  * @author Justin Do
  *
  */
-public class Player extends ActiveAgent {
+public class Player extends ActiveAgent implements Serializable{
 	
 	/**
 	 * This represents the status of the Player.

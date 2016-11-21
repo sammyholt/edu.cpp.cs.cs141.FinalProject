@@ -21,6 +21,7 @@
 
 package edu.cpp.cs.cs141.FinalProject;
 
+import java.io.Serializable;
 import java.util.Random;
 
 /**
@@ -31,7 +32,7 @@ import java.util.Random;
  *
  */
 
-public class Grid {
+public class Grid implements Serializable{
 	
 	/**
 	 * This field represents the {@link #boardSize} for which the square dimensions of the {@link Grid} should be.

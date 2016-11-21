@@ -1,5 +1,6 @@
 package edu.cpp.cs.cs141.FinalProject;
 
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -45,8 +46,10 @@ public class GameEngine {
 	/*
 	 * This will call a function in the @SaveGame object to initialize the save state
 	 */
-	public void saveGame(){
-		
+	public void saveGame() throws IOException
+	{
+		SaveGame sg = new SaveGame();
+		sg.Save(grid);
 	}
 	
 	/*
@@ -118,6 +121,9 @@ public class GameEngine {
 	
 	public void ninjaAI(int ninjanumber){
 		//TODO first check if player is nearby (to stab them) otherwise proceed with moving
+		int playerrow = grid.getPlayerRow();
+		int playercolumn = grid.getPlayerColumn();
+		//if()
 		char wasdmovement;
 		//for(int ninjanumber = 0; ninjanumber < 5; ninjanumber++){
 			do{

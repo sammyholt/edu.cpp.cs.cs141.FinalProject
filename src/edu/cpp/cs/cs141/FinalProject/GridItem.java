@@ -1,5 +1,7 @@
 package edu.cpp.cs.cs141.FinalProject;
 
+import java.io.Serializable;
+
 /**
  * This interface represents an item which can be placed on the grid.
  * All {@link Items} and {@link ActiveAgents} which will be active
@@ -8,7 +10,7 @@ package edu.cpp.cs.cs141.FinalProject;
  * @author Samuel Holt
  *
  */
-public abstract class GridItem {
+public abstract class GridItem implements Serializable{
 	
 	/**
 	 * This field represents the current
