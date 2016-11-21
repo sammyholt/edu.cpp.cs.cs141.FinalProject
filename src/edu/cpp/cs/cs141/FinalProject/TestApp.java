@@ -42,7 +42,8 @@ public class TestApp {
 			//for(int ninjanumber = 0; ninjanumber < testengine.ninjasalive; ninjanumber++)
 				//testengine.ninjaAI(0);
 			if(movementchoice == 'f'){
-				if(testengine.playerShoots('w')){
+				movementchoice = keyboard.next().charAt(0);
+				if(testengine.playerShoots(movementchoice)){
 					System.out.println("You hit an enemy!");
 				}
 			}
