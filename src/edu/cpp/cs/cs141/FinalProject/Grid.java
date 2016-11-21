@@ -26,6 +26,10 @@ public class Grid {
 	 * This flag determines if the grid is in debug mode or not.
 	 */
 	private boolean debugMode;
+	/**
+	 * This flag determines if the briefcase has been found or not.
+	 */
+	private boolean briefcaseFound;
 	
 	/**
 	 * This array represents the rooms
@@ -62,6 +66,7 @@ public class Grid {
 	 */
 	public Grid(){
 		debugMode = false;
+		briefcaseFound = false;
 		initializeGrid();
 	}
 	
@@ -516,6 +521,14 @@ public class Grid {
 		return s;
 	}
 	
+	public boolean briefcaseFound()
+	{
+		if(player.hasBriefcase())
+			briefcaseFound = true;
+		else
+			;
+		return briefcaseFound;
+	}
 	
 	
 	
