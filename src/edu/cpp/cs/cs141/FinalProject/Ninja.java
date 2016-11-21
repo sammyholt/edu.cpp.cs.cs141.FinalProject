@@ -28,21 +28,15 @@ public class Ninja extends ActiveAgent implements Serializable {
 	private int uniqueId;
   
 	/**
-	 * This represents the status of the {@link Ninja}.
+	 * This represents the status of life of the {@link Ninja}.
 	 */
 	private boolean alive;
-	
-	/**
-	 * This represents the number of lives the {@link Ninja} has left which is by default 1.
-	 */
-	private int lives;
 	
 	/**
 	 * The default constructor for the {@link Ninja}.
 	 */
 	public Ninja(){
 		uniqueId = totalNinjas++;
-		lives = 1;
 		alive = true;
 		
 	}
