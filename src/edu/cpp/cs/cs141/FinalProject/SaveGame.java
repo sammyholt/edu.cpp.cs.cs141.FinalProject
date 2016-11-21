@@ -14,7 +14,13 @@ import java.io.IOException;
  * in order to load them back from a file.
  * 
  * @author Robert Gil
- *
+ * Team Choryboys 
+ * Robert Gil
+ * Sammy Holt
+ * Choryboy
+ * Victor Yuen
+ * Justin Do
+ * Matthew McPartland
  */
 
 public class SaveGame implements Serializable
@@ -24,9 +30,20 @@ public class SaveGame implements Serializable
 	Item item = null;
 	Player player = null;
 	Room room = null;
-	Grid grid = null;  
 	GameEngine ge = null;
 	
+	/*
+	 * This represents the grid object that is going to be copied
+	 */
+	Grid grid = null;  
+	
+	/**
+	 * This method will serializes the Grid, Room, Ninja, Item, Player and GridItem and 
+	 * passes the object and output the data into a file to be loaded later
+	 * 
+	 * @param gridParam
+	 * @throws IOException
+	 */
 	public void Save(Grid gridParam) throws IOException
 	{
 		try {
