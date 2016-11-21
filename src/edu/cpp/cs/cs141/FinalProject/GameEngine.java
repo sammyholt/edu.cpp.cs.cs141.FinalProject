@@ -73,7 +73,7 @@ public class GameEngine {
 			return "Invalid move";
 		}
 		//Test for moving out of the array
-		if(playerrow == -1 || playerrow == 10 || playercolumn == -1 || playercolumn == 10)
+		if(playerrow == -1 || playerrow == 9 || playercolumn == -1 || playercolumn == 9)
 			return "You can not walk out of the room";
 		GridItem targetgridspace = grid.board[playerrow][playercolumn];
 		String targetgridspaceletter = grid.letterFromClassName(targetgridspace, targetgridspace.getClass().getSimpleName());
