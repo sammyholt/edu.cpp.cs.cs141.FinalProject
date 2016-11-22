@@ -35,10 +35,6 @@ public class Player extends ActiveAgent implements Serializable{
 	 */
 	private boolean briefcase;
 	
-	/*
-	 * This represents the maximum ammo the player can hold
-	 */
-	private final int maxammo = 1;
 	
 	private Radar playerradar;
 	
@@ -107,8 +103,6 @@ public class Player extends ActiveAgent implements Serializable{
 	public void setAmmo(int inputammo)
 	{
 		ammo += inputammo;
-		if (ammo > maxammo)
-			ammo = maxammo;
 		if (ammo < 0)
 			ammo = 0;
 	}
