@@ -18,18 +18,18 @@ public class GameEngine {
 	private boolean gameFinished = false;
 	
 	private boolean gameWon = false;
-	
-	
-	private boolean turnIndicator = false;
-	
+		
 	
 	public String displayGrid(){
 		return grid.toString();
 	}
 	
 	public boolean gameOver() {
-		if(grid.player.isAlive() != false)
+		if(!grid.player.isAlive())
+		{
 			gameFinished = true;
+			System.out.println("\nGame Over. You suck!");
+		}
 		return gameFinished;
 	}
 	
@@ -38,6 +38,7 @@ public class GameEngine {
 		if(grid.player.hasBriefcase()){
 			gameWon = true;
 			gameFinished = true;
+			System.out.println("\nYou won the game! Good Job!\n");
 		}
 		return gameWon;
 	}
@@ -149,27 +150,77 @@ public class GameEngine {
 	}
 	
 	public void ninjaAI(int ninjanumber){
-		//TODO first check if player is nearby (to stab them) otherwise proceed with moving
-		int playerrow = grid.getPlayerRow();
-		int playercolumn = grid.getPlayerColumn();
-		//if()
-		char wasdmovement;
-		//for(int ninjanumber = 0; ninjanumber < 5; ninjanumber++){
-			do{
-				Random rand = new Random();
-				int randdirection = rand.nextInt(4);
-				if(randdirection == 0){
-					wasdmovement = 'w';
-				}else if(randdirection == 1){
-					wasdmovement = 'a';
-				}else if(randdirection == 2){
-					wasdmovement = 's';
-				}else{
-					wasdmovement = 'd';
+		//checks adjacent space to stab player
+		
+			/*
+					// check same row to the left of ninja
+					if(grid.ninjas[ninjanumber].getYCoordinate() == grid.player.getYCoordinate() && grid.ninjas[ninjanumber].getXCoordinate() ==
+					  grid.player.getXCoordinate() + 1){
+						System.out.println("Playa' got shanked bruh!");
+						// nanja stab and takes 1pt of players life.
+						grid.player.changeLife();
+						
+					}
+					// check same row to the right of ninja
+					else if(grid.ninjas[ninjanumber].getYCoordinate() == grid.player.getYCoordinate() && grid.ninjas[ninjanumber].getXCoordinate() ==
+					  grid.player.getXCoordinate() - 1){
+						System.out.println("Playa' got shanked bruh!");
+						// nanja stab and takes 1pt of players life.
+						grid.player.changeLife();
+						
+					}
+					// check same row to the above ninja
+					else if(grid.ninjas[ninjanumber].getXCoordinate() == grid.player.getXCoordinate() && grid.ninjas[ninjanumber].getYCoordinate() ==
+					  grid.player.getYCoordinate() - 1){
+						System.out.println("Playa' got shanked bruh!");
+						// nanja stab and takes 1pt of players life.
+						grid.player.changeLife();
+						
+					}
+					// check same row to the below ninja
+					else if(grid.ninjas[ninjanumber].getXCoordinate() == grid.player.getXCoordinate() && grid.ninjas[ninjanumber].getYCoordinate() ==
+					  grid.player.getYCoordinate() + 1){
+						System.out.println("Playa' got shanked bruh!");
+						// nanja stab and takes 1pt of players life.
+						grid.player.changeLife();
+						
+					}
+					
+				*/
+		
+		
+		boolean valid = false;
+		while (!valid)
+		{
+			Random rand = new Random();
+			int randomDirection = rand.nextInt(4);
+			
+			if(randomDirection == 0){
+				if(validNinjaMove('w',ninjanumber)){
+					grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate(), grid.ninjas[ninjanumber].getYCoordinate()+1);
+					valid = true;
 				}
-			}while(!validNinjaMove(wasdmovement, ninjanumber));
-			//System.out.println("Ninja number "+ninjanumber+" moved with "+wasdmovement);
-		//}
+			}
+			else if(randomDirection == 1){
+				if(validNinjaMove('a',ninjanumber)){
+					grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate()-1, grid.ninjas[ninjanumber].getYCoordinate());
+					valid = true;
+				}
+			}
+			else if(randomDirection == 2){
+				if(validNinjaMove('s',ninjanumber)){
+					grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate(), grid.ninjas[ninjanumber].getYCoordinate()-1);
+					valid = true;
+				}
+			}
+			else 
+				if(validNinjaMove('d',ninjanumber)){
+					grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate()+1, grid.ninjas[ninjanumber].getYCoordinate());
+					valid = true;
+				}
+					
+		}
+		
 	}
 	
 	public boolean validNinjaMove(char movementchoice, int ninjanumber){
@@ -244,8 +295,10 @@ public class GameEngine {
 	
 	
 	public boolean playerShoots(char directionofshot){
-		if(!grid.player.hasAmmo())
+		if(!grid.player.hasAmmo()){
+			System.out.println("You have no ammo\n");
 			return false;
+		}
 		grid.player.setAmmo(-1);
 		int playerrow = grid.getPlayerRow(), playercolumn = grid.getPlayerColumn();
 		boolean ninjahit = false;
@@ -308,7 +361,7 @@ public class GameEngine {
 							grid.ninjas[j+1] = tempninja;
 						}
 					}
-					ninjasalive --;
+					ninjasalive--;
 					ninjahit = true;
 					break;
 				}
