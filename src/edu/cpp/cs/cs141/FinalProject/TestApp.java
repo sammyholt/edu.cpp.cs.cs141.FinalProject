@@ -1,6 +1,5 @@
 package edu.cpp.cs.cs141.FinalProject;
 
-import java.io.IOException;
 import java.util.Scanner;
 
 /**
@@ -10,13 +9,12 @@ import java.util.Scanner;
  *
  */
 public class TestApp {
-	public static void main(String[] args) throws IOException{
+	public static void main(String[] args){
 		GameEngine testengine = new GameEngine(true);
 		Scanner keyboard = new Scanner(System.in);
 		
-		testengine.saveGame();
-		testengine.ninjaInit();
 		
+		testengine.ninjaInit();
 		char movementchoice = 10;
 		do{
 			System.out.println(testengine.grid);

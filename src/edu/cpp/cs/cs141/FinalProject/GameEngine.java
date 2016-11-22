@@ -13,8 +13,8 @@ import java.util.Random;
  */
 public class GameEngine {
 
-<<<<<<< HEAD
-	private Grid grid = new Grid();
+
+	
 	
 	private boolean gameFinished = false;
 	
@@ -41,7 +41,7 @@ public class GameEngine {
 		else
 			;
 		return gameWon;
-=======
+	}
 	//private Player p1 = null;
 	protected Grid grid = null;
 	public int ninjasalive;
@@ -242,6 +242,7 @@ public class GameEngine {
 		grid.player.invinciblityUseOneTurn();
 	}
 	
+	
 	public boolean playerShoots(char directionofshot){
 		if(!grid.player.hasAmmo())
 			return false;
@@ -340,7 +341,7 @@ public class GameEngine {
 			
 		return ninjahit;
 		
->>>>>>> origin/master
+
 	}
 	
 	public void ninjaInit(){

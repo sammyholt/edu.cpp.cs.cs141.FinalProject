@@ -50,7 +50,6 @@ public class Ninja extends ActiveAgent implements Serializable {
 	}
 	
 	public void kill(){
-		lives = 0;
 		alive = false;
 	}
 	
