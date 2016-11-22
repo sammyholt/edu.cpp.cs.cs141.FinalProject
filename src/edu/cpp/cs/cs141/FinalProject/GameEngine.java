@@ -13,35 +13,7 @@ import java.util.Random;
  */
 public class GameEngine {
 
-<<<<<<< HEAD
-	private Grid grid = new Grid();
-	
-	private boolean gameFinished = false;
-	
-	private boolean gameWon =false;
-	
-	private boolean gameOver = false;
-	
-	private boolean turnIndicator = false;
-	
-	
-	public String displayGrid(){
-		return grid.toString();
-	}
-	
-	public boolean gameOver() {
-		
-		return gameFinished;
-	}
-	
-	public boolean checkWinCondition()
-	{
-		if(grid.briefcaseFound())
-			gameWon = true;
-		else
-			;
-		return gameWon;
-=======
+
 	//private Player p1 = null;
 	protected Grid grid = null;
 	public int ninjasalive;
@@ -278,7 +250,6 @@ public class GameEngine {
 		
 			
 		return ninjahit;
-		
->>>>>>> origin/master
+
 	}
 }
