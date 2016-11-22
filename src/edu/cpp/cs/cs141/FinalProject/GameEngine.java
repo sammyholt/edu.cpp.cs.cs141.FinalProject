@@ -122,7 +122,7 @@ public class GameEngine {
 		for(int i = 0 ; i < ninjasalive ; i++){
 			// check same row to the left of ninja
 			if(grid.ninjas[i].getYCoordinate() == grid.player.getYCoordinate() && grid.ninjas[i].getXCoordinate() ==
-			  grid.player.getX() + 1){
+			  grid.player.getXCoordinate() + 1){
 				System.out.println("Playa' got shanked bruh!");
 				// nanja stab and takes 1pt of players life.
 				grid.player.changeLife();
@@ -130,7 +130,7 @@ public class GameEngine {
 			}
 			// check same row to the right of ninja
 			else if(grid.ninjas[i].getYCoordinate() == grid.player.getYCoordinate() && grid.ninjas[i].getXCoordinate() ==
-			  grid.player.getX() - 1){
+			  grid.player.getXCoordinate() - 1){
 				System.out.println("Playa' got shanked bruh!");
 				// nanja stab and takes 1pt of players life.
 				grid.player.changeLife();
@@ -138,7 +138,7 @@ public class GameEngine {
 			}
 			// check same row to the above ninja
 			else if(grid.ninjas[i].getXCoordinate() == grid.player.getXCoordinate() && grid.ninjas[i].getYCoordinate() ==
-			  grid.player.getY() - 1){
+			  grid.player.getYCoordinate() - 1){
 				System.out.println("Playa' got shanked bruh!");
 				// nanja stab and takes 1pt of players life.
 				grid.player.changeLife();
@@ -146,7 +146,7 @@ public class GameEngine {
 			}
 			// check same row to the below ninja
 			else if(grid.ninjas[i].getXCoordinate() == grid.player.getXCoordinate() && grid.ninjas[i].getYCoordinate() ==
-			  grid.player.getY() + 1){
+			  grid.player.getYCoordinate() + 1){
 				System.out.println("Playa' got shanked bruh!");
 				// nanja stab and takes 1pt of players life.
 				grid.player.changeLife();
