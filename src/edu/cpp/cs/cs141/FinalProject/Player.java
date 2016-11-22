@@ -70,7 +70,7 @@ public class Player extends ActiveAgent implements Serializable{
 	 */
 	public void changeLife()
 	{
-		if (lives >= 0)
+		if (lives > 0)
 			lives--;
 		
 		if(lives == 0)

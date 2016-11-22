@@ -220,6 +220,8 @@ public class GameEngine {
 				}
 					
 		}
+		if(gotStabbed)
+			return;
 		
 	}
 	
@@ -227,8 +229,8 @@ public class GameEngine {
 		
 		//TODO find a way to get unique ninja coordinates
 		System.out.println("Ninja number "+ninjanumber+" moved with "+movementchoice);
-		int initialninjarow = grid.ninjas[ninjanumber].getYCoordinate(), initialninjacolumn = grid.ninjas[ninjanumber].getXCoordinate();
-		int ninjarow = grid.ninjas[ninjanumber].getYCoordinate(), ninjacolumn = grid.ninjas[ninjanumber].getXCoordinate();
+		int initialninjarow = grid.ninjas[ninjanumber].getXCoordinate(), initialninjacolumn = grid.ninjas[ninjanumber].getYCoordinate();
+		int ninjarow = grid.ninjas[ninjanumber].getXCoordinate(), ninjacolumn = grid.ninjas[ninjanumber].getYCoordinate();
 		if(movementchoice == 'w' || movementchoice == 'W'){
 			ninjarow++;
 		}
@@ -244,9 +246,8 @@ public class GameEngine {
 		else{
 			return false;
 		}
-		if(ninjarow == -1 || ninjarow == 10 || ninjacolumn == -1 || ninjacolumn == 10)
+		if(ninjarow == -1 || ninjarow == 9 || ninjacolumn == -1 || ninjacolumn == 9)
 			return false;
-		System.out.println("Ninja move not out of array");
 		GridItem targetgridspace = grid.board[ninjarow][ninjacolumn];
 		String targetgridspaceletter = grid.letterFromClassName(targetgridspace, targetgridspace.getClass().getSimpleName());
 		if(targetgridspaceletter == "B" || targetgridspaceletter == "R"){
