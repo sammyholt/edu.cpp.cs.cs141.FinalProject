@@ -72,6 +72,7 @@ public class Player extends ActiveAgent implements Serializable{
 	{
 		if (lives >= 0)
 			lives--;
+		
 		if(lives == 0)
 			alive = false;
 	}
@@ -110,6 +111,16 @@ public class Player extends ActiveAgent implements Serializable{
 			ammo = maxammo;
 		if (ammo < 0)
 			ammo = 0;
+	}
+	
+	public void resetPlayer()
+	{
+		alive = true;
+		lives = 3;
+		briefcase = false;
+		ammo = 1;
+		playerradar = new Radar();
+		playerinvincibility = new Invincibility();
 	}
 	
 	public boolean hasAmmo(){

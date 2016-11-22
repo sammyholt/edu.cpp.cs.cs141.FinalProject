@@ -10,7 +10,8 @@ import java.util.Scanner;
  */
 public class TestApp {
 	public static void main(String[] args){
-		GameEngine testengine = new GameEngine(true);
+	
+		/*GameEngine testengine = new GameEngine(true);
 		Scanner keyboard = new Scanner(System.in);
 		
 		
@@ -40,7 +41,7 @@ public class TestApp {
 		}while( movementchoice != 'e');
 		
 		keyboard.close();
-		
+		*/
 		
 		/*
 		Grid grid = null;
@@ -59,5 +60,8 @@ public class TestApp {
 		}while(choice != -1);
 		keyboard.close();
 		*/
+		
+		UserInterface ui = new UserInterface(new GameEngine(true));
+		ui.startGame();
 	}
 }
