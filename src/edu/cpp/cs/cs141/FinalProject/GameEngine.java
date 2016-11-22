@@ -233,7 +233,7 @@ public class GameEngine {
 	public boolean validNinjaMove(char movementchoice, int ninjanumber){
 		
 		//TODO find a way to get unique ninja coordinates
-		System.out.println("Ninja number "+ninjanumber+" moved with "+movementchoice);
+		//System.out.println("Ninja number "+ninjanumber+" moved with "+movementchoice);
 		int initialninjarow = grid.ninjas[ninjanumber].getXCoordinate(), initialninjacolumn = grid.ninjas[ninjanumber].getYCoordinate();
 		int ninjarow = grid.ninjas[ninjanumber].getXCoordinate(), ninjacolumn = grid.ninjas[ninjanumber].getYCoordinate();
 		if(movementchoice == 'w' || movementchoice == 'W'){
@@ -315,7 +315,7 @@ public class GameEngine {
 			//in the same column as player, check rows less than player's row
 			for(int i = 0 ; i < ninjasalive ; i++){
 				if(grid.ninjas[i].getYCoordinate() == playercolumn && grid.ninjas[i].getXCoordinate() > playerrow){
-					System.out.println("Found enemy in same column");
+					//System.out.println("Found enemy in same column");
 					grid.board[grid.ninjas[i].getXCoordinate()][grid.ninjas[i].getYCoordinate()] = new EmptySpace();
 					grid.ninjas[i].kill();
 					grid.ninjas[i].giveCoordinates(10, 10);

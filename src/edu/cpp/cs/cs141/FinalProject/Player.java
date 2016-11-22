@@ -113,6 +113,11 @@ public class Player extends ActiveAgent implements Serializable{
 			ammo = 0;
 	}
 	
+	public int getAmmo()
+	{
+		return ammo;
+	}
+	
 	public void resetPlayer()
 	{
 		alive = true;

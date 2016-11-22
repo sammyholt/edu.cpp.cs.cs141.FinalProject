@@ -75,11 +75,14 @@ public class UserInterface {
 		gameModeMessage();
 		newGameMessage(keyboard.nextInt()); // This initializes the GameEngine either in debug mode or normal mode
 		
-		while(!game.checkWinCondition()){
+		while(!game.checkWinCondition() && !game.gameOver()){
 			
 			char movementchoice;
 			
 			System.out.println("\n" + game.grid);
+			System.out.println("\nLives left: " + game.grid.player.getLives() );
+			System.out.println("Ammos left: " + game.grid.player.getAmmo());
+
 			
 			game.endOfTurnCleanUp();
 			
@@ -89,15 +92,14 @@ public class UserInterface {
 			
 			
 			for(int ninjanumber = 0; ninjanumber < game.ninjasalive; ninjanumber++){
-			game.ninjaAI(ninjanumber);
-			System.out.println("ninja " + ninjanumber + " moved");
-			System.out.println(game.grid.ninjas[ninjanumber].getXCoordinate()+","+game.grid.ninjas[ninjanumber].getYCoordinate());
+				game.ninjaAI(ninjanumber);
 			}
-			
+			/*
 			if(debugMode)
 				for(int i = 0 ; i < game.ninjasalive ; i++){
 				System.out.println("\nNinja Coordinates\n"+game.grid.ninjas[i].getXCoordinate()+","+game.grid.ninjas[i].getYCoordinate());
 				}
+				*/
 		}
 		
 		
@@ -140,6 +142,7 @@ public class UserInterface {
 				movementchoice == 'd'|| movementchoice == 'S' || movementchoice == 's')
 		{
 			System.out.println(game.playerMovement(movementchoice));
+			
 		}
 
 		else if(movementchoice == 'f' || movementchoice == 'F')
@@ -150,7 +153,12 @@ public class UserInterface {
 					if(game.playerShoots(movementchoice))
 					{
 						System.out.println("You hit an enemy!\n");
+						
+						
 					}
+					else
+						System.out.println("You didn't hit an enemy :(\n1");
+						
 					
 						
 		}
