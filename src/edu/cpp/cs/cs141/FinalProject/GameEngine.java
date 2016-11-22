@@ -152,41 +152,46 @@ public class GameEngine {
 	public void ninjaAI(int ninjanumber){
 		//checks adjacent space to stab player
 		
-			/*
-					// check same row to the left of ninja
-					if(grid.ninjas[ninjanumber].getYCoordinate() == grid.player.getYCoordinate() && grid.ninjas[ninjanumber].getXCoordinate() ==
-					  grid.player.getXCoordinate() + 1){
-						System.out.println("Playa' got shanked bruh!");
-						// nanja stab and takes 1pt of players life.
-						grid.player.changeLife();
-						
-					}
-					// check same row to the right of ninja
-					else if(grid.ninjas[ninjanumber].getYCoordinate() == grid.player.getYCoordinate() && grid.ninjas[ninjanumber].getXCoordinate() ==
-					  grid.player.getXCoordinate() - 1){
-						System.out.println("Playa' got shanked bruh!");
-						// nanja stab and takes 1pt of players life.
-						grid.player.changeLife();
-						
-					}
-					// check same row to the above ninja
-					else if(grid.ninjas[ninjanumber].getXCoordinate() == grid.player.getXCoordinate() && grid.ninjas[ninjanumber].getYCoordinate() ==
-					  grid.player.getYCoordinate() - 1){
-						System.out.println("Playa' got shanked bruh!");
-						// nanja stab and takes 1pt of players life.
-						grid.player.changeLife();
-						
-					}
-					// check same row to the below ninja
-					else if(grid.ninjas[ninjanumber].getXCoordinate() == grid.player.getXCoordinate() && grid.ninjas[ninjanumber].getYCoordinate() ==
-					  grid.player.getYCoordinate() + 1){
-						System.out.println("Playa' got shanked bruh!");
-						// nanja stab and takes 1pt of players life.
-						grid.player.changeLife();
-						
-					}
-					
-				*/
+		//Prevents ninjas from getting stabbed and the moving, aka effectively having two turns
+		boolean gotStabbed = false;
+		// check same row to the left of ninja
+		if(grid.ninjas[ninjanumber].getYCoordinate() == grid.getPlayerColumn() && grid.ninjas[ninjanumber].getXCoordinate() ==
+		  grid.getPlayerRow() + 1){
+			System.out.println("Playa' got shanked bruh!");
+			// nanja stab and takes 1pt of players life.
+			grid.player.changeLife();
+			gotStabbed = true;
+			
+		}
+		// check same row to the right of ninja
+		else if(grid.ninjas[ninjanumber].getYCoordinate() == grid.getPlayerColumn() && grid.ninjas[ninjanumber].getXCoordinate() ==
+		  grid.getPlayerRow() - 1){
+			System.out.println("Playa' got shanked bruh!");
+			// nanja stab and takes 1pt of players life.
+			grid.player.changeLife();
+			gotStabbed = true;
+			
+		}
+		// check same row to the above ninja
+		else if(grid.ninjas[ninjanumber].getXCoordinate() == grid.getPlayerRow() && grid.ninjas[ninjanumber].getYCoordinate() ==
+		  grid.getPlayerColumn() - 1){
+			System.out.println("Playa' got shanked bruh!");
+			// nanja stab and takes 1pt of players life.
+			grid.player.changeLife();
+			gotStabbed = true;
+			
+		}
+		// check same row to the below ninja
+		else if(grid.ninjas[ninjanumber].getXCoordinate() == grid.getPlayerRow() && grid.ninjas[ninjanumber].getYCoordinate() ==
+		  grid.getPlayerColumn() + 1){
+			System.out.println("Playa' got shanked bruh!");
+			// nanja stab and takes 1pt of players life.
+			grid.player.changeLife();
+			gotStabbed = true;
+			
+		}
+		if(gotStabbed)
+			return;
 		
 		
 		boolean valid = false;
@@ -220,8 +225,6 @@ public class GameEngine {
 				}
 					
 		}
-		if(gotStabbed)
-			return;
 		
 	}
 	
@@ -395,24 +398,6 @@ public class GameEngine {
 			
 		return ninjahit;
 
-
-	}
-	
-	public void ninjaInit(){
-		GridItem testspace;
-		String testspaceletter;
-		int ninjacounter = 0;
-		for(int i=0; i < 9; i++){
-			for(int j=0; j < 9; j++){
-				testspace = grid.board[i][j];
-				testspaceletter = grid.letterFromClassName(testspace, testspace.getClass().getSimpleName());
-				if(testspaceletter == "N")
-				{
-					grid.ninjas[ninjacounter].giveCoordinates(i, j);
-					ninjacounter++;
-				}
-			}
-		}
 
 	}
 	
