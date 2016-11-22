@@ -115,11 +115,13 @@ public class UserInterface {
 		if(option == 1){
 			System.out.println("New game in debug mode started!\n");
 			game = new GameEngine(true);
+			game.ninjaInit();
 			debugMode=true;
 		}
 		else{
 			System.out.println("New game started! \n");
 			game = new GameEngine();
+			game.ninjaInit();
 			debugMode=false;
 		}
 
