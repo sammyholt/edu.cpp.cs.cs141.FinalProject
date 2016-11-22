@@ -202,25 +202,25 @@ public class GameEngine {
 			
 			if(randomDirection == 0){
 				if(validNinjaMove('w',ninjanumber)){
-					grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate(), grid.ninjas[ninjanumber].getYCoordinate()+1);
+					//grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate(), grid.ninjas[ninjanumber].getYCoordinate()+1);
 					valid = true;
 				}
 			}
 			else if(randomDirection == 1){
 				if(validNinjaMove('a',ninjanumber)){
-					grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate()-1, grid.ninjas[ninjanumber].getYCoordinate());
+					//grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate()-1, grid.ninjas[ninjanumber].getYCoordinate());
 					valid = true;
 				}
 			}
 			else if(randomDirection == 2){
 				if(validNinjaMove('s',ninjanumber)){
-					grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate(), grid.ninjas[ninjanumber].getYCoordinate()-1);
+					//grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate(), grid.ninjas[ninjanumber].getYCoordinate()-1);
 					valid = true;
 				}
 			}
 			else 
 				if(validNinjaMove('d',ninjanumber)){
-					grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate()+1, grid.ninjas[ninjanumber].getYCoordinate());
+					//grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate()+1, grid.ninjas[ninjanumber].getYCoordinate());
 					valid = true;
 				}
 					
