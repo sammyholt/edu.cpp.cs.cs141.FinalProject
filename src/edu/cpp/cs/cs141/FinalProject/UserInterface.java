@@ -90,9 +90,10 @@ public class UserInterface {
 			movementchoice = keyboard.next().charAt(0);
 			actionMethod(movementchoice);
 			
-			
-			for(int ninjanumber = 0; ninjanumber < game.ninjasalive; ninjanumber++){
-				game.ninjaAI(ninjanumber);
+			if(!game.grid.player.hasBriefcase()){
+				for(int ninjanumber = 0; ninjanumber < game.ninjasalive; ninjanumber++){
+					game.ninjaAI(ninjanumber);
+				}
 			}
 			/*
 			if(debugMode)
