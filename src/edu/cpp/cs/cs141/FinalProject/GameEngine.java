@@ -195,8 +195,9 @@ public class GameEngine {
 				return;
 		}	
 		
+		int ninjamovementattemptcount = 0;
 		boolean valid = false;
-		while (!valid)
+		while (!valid && ninjamovementattemptcount < 10)
 		{
 			Random rand = new Random();
 			int randomDirection = rand.nextInt(4);
@@ -224,7 +225,7 @@ public class GameEngine {
 					//grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate()+1, grid.ninjas[ninjanumber].getYCoordinate());
 					valid = true;
 				}
-					
+			ninjamovementattemptcount++;		
 		}
 		
 	}
