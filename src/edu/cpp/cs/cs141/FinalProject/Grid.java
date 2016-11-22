@@ -75,7 +75,7 @@ public class Grid implements Serializable{
 	 * This field represents the {@link Player} on
 	 * the {@link Grid}.
 	 */
-	protected Player player = new Player();
+	protected Player player = null;
 	
 	/**
 	 * This field is a two-dimensional array
@@ -91,7 +91,7 @@ public class Grid implements Serializable{
 	 * the {@link #initializeGrid()} method in order to place
 	 * all the {@link GridItems} on the {@link Grid}.
 	 */
-	public Grid(){
+	    public Grid(){
 		debugMode = false;
 		briefcaseFound = false;
 		initializeGrid();
@@ -249,6 +249,7 @@ public class Grid implements Serializable{
 	 */
 	public void initializeGrid(){
 		// initialize player in bottom left
+		player = new Player();
 		board[0][0] = player;
 		// place the rooms equally apart
 		board = placeRooms(board, rooms);
@@ -588,18 +589,5 @@ public class Grid implements Serializable{
 		return s;
 	}
 	
-	public boolean briefcaseFound()
-	{
-		if(player.hasBriefcase())
-			briefcaseFound = true;
-		else
-			;
-		return briefcaseFound;
-	}
 	
-	
-	
-	
-	
-
 }

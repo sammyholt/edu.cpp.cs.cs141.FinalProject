@@ -38,7 +38,6 @@ public class Ninja extends ActiveAgent implements Serializable {
 	public Ninja(){
 		uniqueId = totalNinjas++;
 		alive = true;
-		
 	}
 	
 	/**

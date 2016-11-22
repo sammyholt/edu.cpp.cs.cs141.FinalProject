@@ -29,6 +29,7 @@ public class UserInterface {
 			
 			switch(option) {
 			case 1: // Starts a new game
+				gameLoop();
 				break;
 			
 			case 2: // Loads a saved game
@@ -40,13 +41,9 @@ public class UserInterface {
 			default:
 				System.out.println("Invalid option. Try again...");
 				break;
-			}
-			
-		}
-		
+			}	
+		}	
 	}
-
-
 
 	private void printWelcomeMessage() {
 		System.out.println("Welcome to Spy Game! \n\n");
@@ -59,6 +56,7 @@ public class UserInterface {
 				+ "\t1. Start New Game.\n"
 				+ "\t2. Load Game. \n"
 				+ "\t3. Quit.");
+		
 		option = keyboard.nextInt();
 		keyboard.nextLine();
 		
@@ -66,7 +64,10 @@ public class UserInterface {
 	}
 	
 	private void gameLoop(){
-		 // create reset() in GameEngine class
+		 
+		
+		
 		
 	}
+	
 }
