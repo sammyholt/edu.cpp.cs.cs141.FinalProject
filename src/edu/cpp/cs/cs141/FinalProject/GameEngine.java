@@ -1,5 +1,6 @@
 package edu.cpp.cs.cs141.FinalProject;
 
+import java.io.IOException;
 import java.util.Random;
 
 /**
@@ -12,6 +13,35 @@ import java.util.Random;
  */
 public class GameEngine {
 
+<<<<<<< HEAD
+	private Grid grid = new Grid();
+	
+	private boolean gameFinished = false;
+	
+	private boolean gameWon =false;
+	
+	private boolean gameOver = false;
+	
+	private boolean turnIndicator = false;
+	
+	
+	public String displayGrid(){
+		return grid.toString();
+	}
+	
+	public boolean gameOver() {
+		
+		return gameFinished;
+	}
+	
+	public boolean checkWinCondition()
+	{
+		if(grid.briefcaseFound())
+			gameWon = true;
+		else
+			;
+		return gameWon;
+=======
 	//private Player p1 = null;
 	protected Grid grid = null;
 	public int ninjasalive;
@@ -45,8 +75,10 @@ public class GameEngine {
 	/*
 	 * This will call a function in the @SaveGame object to initialize the save state
 	 */
-	public void saveGame(){
-		
+	public void saveGame() throws IOException
+	{
+		SaveGame sg = new SaveGame();
+		sg.Save(grid);
 	}
 	
 	/*
@@ -73,7 +105,7 @@ public class GameEngine {
 			return "Invalid move";
 		}
 		//Test for moving out of the array
-		if(playerrow == -1 || playerrow == 9 || playercolumn == -1 || playercolumn == 9)
+		if(!grid.inBounds(playerrow, playercolumn))
 			return "You can not walk out of the room";
 		GridItem targetgridspace = grid.board[playerrow][playercolumn];
 		String targetgridspaceletter = grid.letterFromClassName(targetgridspace, targetgridspace.getClass().getSimpleName());
@@ -118,6 +150,9 @@ public class GameEngine {
 	
 	public void ninjaAI(int ninjanumber){
 		//TODO first check if player is nearby (to stab them) otherwise proceed with moving
+		int playerrow = grid.getPlayerRow();
+		int playercolumn = grid.getPlayerColumn();
+		//if()
 		char wasdmovement;
 		//for(int ninjanumber = 0; ninjanumber < 5; ninjanumber++){
 			do{
@@ -305,6 +340,7 @@ public class GameEngine {
 			
 		return ninjahit;
 		
+>>>>>>> origin/master
 	}
 	
 	public void ninjaInit(){

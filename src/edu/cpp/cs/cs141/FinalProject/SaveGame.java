@@ -20,23 +20,21 @@ import java.io.IOException;
 public class SaveGame implements Serializable
 {
 
-	Ninja ninja = null;
-	Item item = null;
-	Player player = null;
-	Room room = null;
-	Grid grid = null;  
-	GameEngine ge = null;
-	
+	/**
+	 * This method will pass serializable objects Grid, Player, Ninja, Item, Room and GridItem and output the files 
+	 * to a file to be loaded at a later point 
+	 * 
+	 * @param gridParam
+	 */
 	public void Save(Grid gridParam) throws IOException
 	{
 		try {
 			
-			grid= gridParam;
+			Grid grid = gridParam;
 			
 			FileOutputStream fileOut = new FileOutputStream("savegame.dat");
 			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
 			objectOut.writeObject(grid);
-			objectOut.flush();
 			objectOut.close();
 			
 		} catch (IOException e) {

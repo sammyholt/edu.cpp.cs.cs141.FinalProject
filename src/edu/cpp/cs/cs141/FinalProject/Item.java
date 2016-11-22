@@ -1,5 +1,7 @@
 package edu.cpp.cs.cs141.FinalProject;
 
+import java.io.Serializable;
+
 /**
  * This interface represents all the items in the game.  The
  * items can be picked up on the board by the player.
@@ -8,7 +10,7 @@ package edu.cpp.cs.cs141.FinalProject;
  *
  */
 
-public abstract class Item extends GridItem {
+public abstract class Item extends GridItem implements Serializable{
 
 	/*
 	 * This is the max amount of turns that the item is active

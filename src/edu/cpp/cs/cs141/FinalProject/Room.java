@@ -1,5 +1,7 @@
 package edu.cpp.cs.cs141.FinalProject;
 
+import java.io.Serializable;
+
 /**
  * This class will allow for the rooms to be represented as their own entity.
  * The rooms should know if they have the briefcase or not
@@ -7,7 +9,7 @@ package edu.cpp.cs.cs141.FinalProject;
  * @author Samuel Holt
  *
  */
-public class Room extends GridItem {
+public class Room extends GridItem implements Serializable{
 	
 	/**
 	 * This represents if the room has the briefcase.  It will be true if
