@@ -191,8 +191,14 @@ public class GameEngine {
 				gotStabbed = true;
 				
 			}
-			if(gotStabbed)
+			if(gotStabbed){
+				int initialplayerrow = grid.getPlayerRow(), initialplayercolumn = grid.getPlayerColumn();
+				int playerrow = 0, playercolumn = 0;
+				GridItem targetgridspace = grid.board[playerrow][playercolumn];
+				grid.board[playerrow][playercolumn] = grid.player;
+				grid.board[initialplayerrow][initialplayercolumn] = targetgridspace;
 				return;
+			}
 		}	
 		
 		int ninjamovementattemptcount = 0;
