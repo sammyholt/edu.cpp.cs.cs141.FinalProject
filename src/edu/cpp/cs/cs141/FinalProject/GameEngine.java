@@ -248,6 +248,8 @@ public class GameEngine {
 	}
 	
 	public boolean playerShoots(char directionofshot){
+		if(!grid.player.hasAmmo()) 
+		      return false; 
 		grid.player.setAmmo(-1);
 		int playerrow = grid.getPlayerRow(), playercolumn = grid.getPlayerColumn();
 		boolean ninjahit = false;
@@ -260,7 +262,6 @@ public class GameEngine {
 				if(grid.ninjas[i].getYCoordinate() == playercolumn && grid.ninjas[i].getXCoordinate() > playerrow){
 					System.out.println("Found enemy in same column");
 					grid.board[grid.ninjas[i].getXCoordinate()][grid.ninjas[i].getYCoordinate()] = new EmptySpace();
-					ninjasalive --;
 					grid.ninjas[i].kill();
 					grid.ninjas[i].giveCoordinates(10, 10);
 					for(int q = 0 ; q < ninjasalive ; q++){
@@ -268,17 +269,74 @@ public class GameEngine {
 							grid.ninjas[q] = grid.ninjas[q+1];
 						}
 					}
+					ninjasalive--;
 					ninjahit = true;
 					break;
 				}
 			}
 		}else if(directionofshot == 'a' || directionofshot == 'A'){
 			//in the same row as player, check columns less than the player's column
+			for(int i = 0 ; i < ninjasalive ; i++){ 
+		        if(grid.ninjas[i].getXCoordinate() == playerrow && grid.ninjas[i].getYCoordinate() < playercolumn){ 
+		          System.out.println("Found enemy in same column"); 
+		          grid.board[grid.ninjas[i].getXCoordinate()][grid.ninjas[i].getYCoordinate()] = new EmptySpace(); 
+		          grid.ninjas[i].kill(); 
+		          grid.ninjas[i].giveCoordinates(10, 10); 
+		          //Sort dead ninjas out of the array 
+		          for(int j = 0 ; j < grid.ninjas.length-1 ; j++){ 
+		            if(!grid.ninjas[j].getAlive()){ 
+		              Ninja tempninja = grid.ninjas[j]; 
+		              grid.ninjas[j] = grid.ninjas[j+1]; 
+		              grid.ninjas[j+1] = tempninja; 
+		            } 
+		          } 
+		          ninjasalive --; 
+		          ninjahit = true; 
+		          break; 
+		        } 
+		      } 
 		}else if(directionofshot == 's' || directionofshot == 'S'){
 			//in the same column as player, check rows greater than player's row
+			for(int i = 0 ; i < ninjasalive ; i++){ 
+		        if(grid.ninjas[i].getYCoordinate() == playercolumn && grid.ninjas[i].getXCoordinate() < playerrow){ 
+		          System.out.println("Found enemy in same column"); 
+		          grid.board[grid.ninjas[i].getXCoordinate()][grid.ninjas[i].getYCoordinate()] = new EmptySpace(); 
+		          grid.ninjas[i].kill(); 
+		          grid.ninjas[i].giveCoordinates(10, 10); 
+		          for(int j = 0 ; j < grid.ninjas.length-1 ; j++){ 
+		            if(!grid.ninjas[j].getAlive()){ 
+		              Ninja tempninja = grid.ninjas[j]; 
+		              grid.ninjas[j] = grid.ninjas[j+1]; 
+		              grid.ninjas[j+1] = tempninja; 
+		            } 
+		          } 
+		          ninjasalive --; 
+		          ninjahit = true; 
+		          break; 
+		        } 
+		      } 
 		}else{
 			//D
 			//in the same row as player, check columns greater than the player column
+			for(int i = 0 ; i < ninjasalive ; i++){ 
+		        if(grid.ninjas[i].getXCoordinate() == playerrow && grid.ninjas[i].getYCoordinate() > playercolumn){ 
+		          System.out.println("Found enemy in same column"); 
+		          grid.board[grid.ninjas[i].getXCoordinate()][grid.ninjas[i].getYCoordinate()] = new EmptySpace(); 
+		          grid.ninjas[i].kill(); 
+		          grid.ninjas[i].giveCoordinates(10, 10); 
+		          //Sort dead ninjas out of the array 
+		          for(int j = 0 ; j < grid.ninjas.length-1 ; j++){ 
+		            if(!grid.ninjas[j].getAlive()){ 
+		              Ninja tempninja = grid.ninjas[j]; 
+		              grid.ninjas[j] = grid.ninjas[j+1]; 
+		              grid.ninjas[j+1] = tempninja; 
+		            } 
+		          } 
+		          ninjasalive --; 
+		          ninjahit = true; 
+		          break; 
+		        } 
+		      } 
 		}
 		
 			
