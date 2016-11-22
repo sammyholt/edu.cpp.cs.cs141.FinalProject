@@ -414,4 +414,22 @@ public class GameEngine {
 		}
 
 	}
+	
+		public void ninjaInit(){
+		GridItem testspace;
+		String testspaceletter;
+		int ninjacounter = 0;
+		for(int i=0; i < 9; i++){
+			for(int j=0; j < 9; j++){
+				testspace = grid.board[i][j];
+				testspaceletter = grid.letterFromClassName(testspace, testspace.getClass().getSimpleName());
+				if(testspaceletter == "N")
+				{
+					grid.ninjas[ninjacounter].giveCoordinates(i, j);
+					ninjacounter++;
+				}
+			}
+		}
+
+	}
 }
