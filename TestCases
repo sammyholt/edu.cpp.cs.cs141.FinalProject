@@ -1,0 +1,26 @@
+Test case id: 1
+Unit to test: mainMenu presents the menu of the game
+Assumptions: NA
+Test data: NA
+Expected result: Display options Start new game, Load Game, Quit and wait for input
+Actual result: Display options Start new game, Load Game, Quit and wait for input
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 2
+Unit to test: incorrect numerical input on main menu defaults to "Invalid Option. Try again"
+Assumptions: Can take options other than 1,2,3 but defaults to "Invalid Option"
+Test data: startGame()'s option variable
+Expected result: "Invalid option. Try again..."
+Actual result: "Invalid option. Try again..."
+Pass/Fail: Pass
+Comments: Will not pass with double values
+
+Test case id: 3
+Unit to test: alphabetic input on main menu defaults to "Invalid Option. Try again"
+Assumptions: Can take options other than 1,2,3 but defaults to "Invalid Option" 
+Test data: startGame()'s option variable
+Expected result: "Invalid option. Try again..."
+Actual result: Exception in thread "main" java.util.InputMismatchException
+Pass/Fail: Fail
+Comments: Will not pass with any Alphabetic input
