@@ -72,9 +72,45 @@ Comments: NA
 
 Test case id: 9
 Unit to test: input 0 will start new game from debug menu without debugging mode enabled
-Assumptions: All grid objects are hidden 
-Test data: newGameMessage()'s option variable
-Expected result: Invalid Option. Try again"
-Actual result: Exception in thread "main" java.util.InputMismatchException
-Pass/Fail: Fail
+Assumptions: All grid objects are hidden unless a power up spawned in immediate area
+Test data: boardString()'s className variable
+Expected result: ' ' unless power up, in which case would be U, I and or D for Bullet, Invincibility and Radar respectively
+Actual result: ' ' unless power up, in which case would be U, I and or D for Bullet, Invincibility and Radar respectively
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 10
+Unit to test: input 1 will start new game from debug menu with debugging mode enabled
+Assumptions: All grid objects are shown across the board
+Test data: boardString()'s className variable
+Expected result: ' ' unless power up, Ninja, Room or Briefcase 
+Actual result: ' ' unless power up, Ninja, Room or Briefcase 
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 11
+Unit to test: walk to the left at the player's initial position
+Assumptions: Player should not be able to go out of the grid
+Test data: Player out of grid bounds
+Expected result: Player stays at initial position, output try again
+Actual result: Player stays at initial position, output try again
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 11
+Unit to test: walk left from the player's initial position
+Assumptions: Player should not be able to go out of the grid
+Test data: Player out of grid bounds
+Expected result: Player stays at initial position, output try again
+Actual result: Player stays at initial position, output try again
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 12
+Unit to test: walk down a unit from the player's initial position
+Assumptions: Player should not be able to go out of the grid
+Test data: Player out of grid bounds
+Expected result: Player stays at initial position, output try again
+Actual result: Player stays at initial position, output try again
+Pass/Fail: Pass
 Comments: NA
