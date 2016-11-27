@@ -24,3 +24,57 @@ Expected result: "Invalid option. Try again..."
 Actual result: Exception in thread "main" java.util.InputMismatchException
 Pass/Fail: Fail
 Comments: Will not pass with any Alphabetic input
+
+Test case id: 4
+Unit to test: special character input on main menu defaults to "Invalid Option. Try again"
+Assumptions: Can take options other than 1,2,3 but defaults to "Invalid Option" 
+Test data: startGame()'s option variable
+Expected result: "Invalid option. Try again..."
+Actual result: Exception in thread "main" java.util.InputMismatchException
+Pass/Fail: Fail
+Comments: Will not pass with any special character input
+
+Test case id: 5
+Unit to test: Input '3' will close keyboard input and exit the game
+Assumptions: The game stops when quit variable becomes true
+Test data: startGame()'s quit variable
+Expected result: "Thank you for playing Spy Game."
+Actual result: "Thank you for playing Spy Game."
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 6
+Unit to test: incorrect numerical input on debug menu defaults to "Invalid Option. Try again"
+Assumptions: The game will request different input
+Test data: newGameMessage()'s option variable
+Expected result: "Invalid Option. Try again"
+Actual result: New game starts with debug mode off
+Pass/Fail: Fail
+Comments: NA
+
+Test case id: 7
+Unit to test: alphabetic input on debug menu defaults to "Invalid Option. Try again"
+Assumptions: The game will request different input
+Test data: newGameMessage()'s option variable
+Expected result: Invalid Option. Try again"
+Actual result: Exception in thread "main" java.util.InputMismatchException
+Pass/Fail: Fail
+Comments: NA
+
+Test case id: 8
+Unit to test: special character input on debug menu defaults to "Invalid Option. Try again"
+Assumptions: The game will request different input
+Test data: newGameMessage()'s option variable
+Expected result: Invalid Option. Try again"
+Actual result: Exception in thread "main" java.util.InputMismatchException
+Pass/Fail: Fail
+Comments: NA
+
+Test case id: 9
+Unit to test: input 0 will start new game from debug menu without debugging mode enabled
+Assumptions: All grid objects are hidden 
+Test data: newGameMessage()'s option variable
+Expected result: Invalid Option. Try again"
+Actual result: Exception in thread "main" java.util.InputMismatchException
+Pass/Fail: Fail
+Comments: NA
