@@ -97,8 +97,8 @@ Actual result: Player stays at initial position, output try again
 Pass/Fail: Pass
 Comments: NA
 
-Test case id: 11
-Unit to test: walk left from the player's initial position
+Test case id: 12
+Unit to test: walk down a unit from the player's initial position
 Assumptions: Player should not be able to go out of the grid
 Test data: Player out of grid bounds
 Expected result: Player stays at initial position, output try again
@@ -106,11 +106,353 @@ Actual result: Player stays at initial position, output try again
 Pass/Fail: Pass
 Comments: NA
 
-Test case id: 12
-Unit to test: walk down a unit from the player's initial position
-Assumptions: Player should not be able to go out of the grid
-Test data: Player out of grid bounds
-Expected result: Player stays at initial position, output try again
-Actual result: Player stays at initial position, output try again
+Test case id: 13
+Unit to test: enter the bottom left most room from the south
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 14
+Unit to test: enter the bottom left most room from the west
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 15
+Unit to test: enter the bottom left most room from the east
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 16
+Unit to test: enter the bottom left most room from the north
+Assumptions: Player should be able to check inside the room but remain outside of it
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job! 
+Actual result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 17
+Unit to test: enter the middle left most room from the east
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 18
+Unit to test: enter the middle left most room from the south
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 19
+Unit to test: enter the middle left most room from the west
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 20
+Unit to test: enter the middle left most room from the north
+Assumptions: Player should be able to check inside the room but remain outside of it
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job! 
+Actual result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 21
+Unit to test: enter the upper left most room from the west
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 22
+Unit to test: enter the upper left most room from the south
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 23
+Unit to test: enter the upper left most room from the east
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 24
+Unit to test: enter the upper left most room from the north
+Assumptions: Player should be able to check inside the room but remain outside of it
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job! 
+Actual result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 25
+Unit to test: enter the upper middle most room from the west
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 26
+Unit to test: enter the upper middle left most room from the south
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 27
+Unit to test: enter the upper middle left most room from the east
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 28
+Unit to test: enter the upper middle left most room from the north
+Assumptions: Player should be able to check inside the room but remain outside of it
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job! 
+Actual result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 29
+Unit to test: enter the center room from the west
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 30
+Unit to test: enter the center room from the south
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 31
+Unit to test: enter the center room from the east
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 32
+Unit to test: enter the center room from the north
+Assumptions: Player should be able to check inside the room but remain outside of it
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job! 
+Actual result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 33
+Unit to test: enter the bottom middle room from the west
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 34
+Unit to test: enter the bottom middle room from the south
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 35
+Unit to test: enter the bottom middle room from the east
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 36
+Unit to test: enter the bottom middle room from the north
+Assumptions: Player should be able to check inside the room but remain outside of it
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job! 
+Actual result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 37
+Unit to test: enter the upper right room from the west
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 38
+Unit to test: enter the upper right room from the south
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 39
+Unit to test: enter the upper right room from the east
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 40
+Unit to test: enter the upper right room from the north
+Assumptions: Player should be able to check inside the room but remain outside of it
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job! 
+Actual result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 41
+Unit to test: enter the middle right room from the west
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 42
+Unit to test: enter the middle right room from the south
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 43
+Unit to test: enter the middle right room from the east
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 44
+Unit to test: enter the middle right room from the north
+Assumptions: Player should be able to check inside the room but remain outside of it
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job! 
+Actual result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 45
+Unit to test: enter the bottom right room from the west
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 46
+Unit to test: enter the bottom right room from the south
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 47
+Unit to test: enter the bottom right room from the east
+Assumptions: Player should not be able to go in the room
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You can only enter the room from the top
+Actual result: Player stays at initial position, output You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 48 
+Unit to test: enter the bottom right room from the north
+Assumptions: Player should be able to check inside the room but remain outside of it
+Test data: Player's momvement
+Expected result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job! 
+Actual result: Player stays at initial position, output You entered the room and found nothing OR You found the briefcase!You won the game! Good Job!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 49
+Unit to test: Player's invincibility
+Assumptions: Player should not lose lives by ninjas within 5 turns; Ninjas should have no effect on player's location
+Test data: Player's lives & location
+Expected result: Player can get shanked but does not lose a life or it's position, output: You picked up invincibility! You cannot die for the next 5 turns!
+Actual result: Player loses a life, player location resets to starting point and output: You picked up invincibility! You cannot die for the next 5 turns!
+Pass/Fail: Fail
+Comments: NA
+
+Test case id: 50
+Unit to test: Player's ability to pick up additional bullet with while carrying 1 bullet
+Assumptions: Player's ammo amount changes to 2
+Test data: Player's ammo 
+Expected result: Player can pick up an additional bullet to carry a total of 2 bullets.  output: You picked up an ammo, you gained one bullet.
+Actual result: Player can pick up an additional bullet to carry a total of 2 bullets.  output: You picked up an ammo, you gained one bullet.
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 51
+Unit to test: Player's ability to pick up additional bullet with while carrying 0 bullet
+Assumptions: Player's ammo amount changes to 1
+Test data: Player's ammo 
+Expected result: Player can pick up a bullet to carry a total of 1 bullet.  output: You picked up an ammo, you gained one bullet.
+Actual result: Player can pick up a bullet to carry a total of 1 bullet.  output: You picked up an ammo, you gained one bullet.
 Pass/Fail: Pass
 Comments: NA
