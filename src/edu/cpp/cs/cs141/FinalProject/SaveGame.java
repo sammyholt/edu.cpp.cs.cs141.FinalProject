@@ -2,6 +2,7 @@ package edu.cpp.cs.cs141.FinalProject;
 
 import java.io.Serializable;
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
@@ -40,6 +41,18 @@ public class SaveGame implements Serializable
 		} catch (IOException e) {
 			System.out.println("Error: File Cannot Be Saved. Try Again.");
 		}
+	}
+	
+	public Grid Load() throws IOException, ClassNotFoundException
+	{
+
+			FileInputStream fis = new FileInputStream("savegame.dat");
+			ObjectInputStream ois = new ObjectInputStream(fis);
+			Grid grid = (Grid) ois.readObject();
+			ois.close();
+			
+			return grid;
+		
 	}
 
 }

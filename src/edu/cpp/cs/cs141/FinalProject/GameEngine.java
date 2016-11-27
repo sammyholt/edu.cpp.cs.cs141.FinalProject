@@ -59,8 +59,10 @@ public class GameEngine {
 	}
 	
 	
-	public void loadGame(){
-		
+	public void loadGame() throws ClassNotFoundException, IOException
+	{
+		SaveGame sg = new SaveGame();
+		sg.Load();
 	}
 	
 	/*
@@ -426,4 +428,9 @@ public class GameEngine {
 		}
 
 	}
+		
+		public void loadGrid(Grid gridParam)
+		{
+			this.grid = gridParam;
+		}
 }

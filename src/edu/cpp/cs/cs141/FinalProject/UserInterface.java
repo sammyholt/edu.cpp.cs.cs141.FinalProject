@@ -1,5 +1,8 @@
 package edu.cpp.cs.cs141.FinalProject;
 
+import java.io.FileInputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
 import java.util.Scanner;
 /**
  * This class represents the user interface of the game.  It is what allows
@@ -15,13 +18,14 @@ public class UserInterface {
 	private GameEngine game = null;
 	private Scanner keyboard = null;
 	private boolean debugMode = false;
+	SaveGame sg = new SaveGame();
 	
 	public UserInterface (GameEngine game){
 		this.game = game;
 		keyboard = new Scanner(System.in);
 	}
 	
-	public void startGame() {
+	public void startGame() throws IOException, ClassNotFoundException {
 		printWelcomeMessage();
 		boolean quit = false;
 		
@@ -34,6 +38,8 @@ public class UserInterface {
 				break;
 			
 			case 2: // Loads a saved game
+				game.loadGrid(sg.Load());
+				gameLoop();
 				break;
 			
 			case 3: // Quits game
@@ -70,7 +76,7 @@ public class UserInterface {
 		return option;
 	}
 	
-	private void gameLoop(){
+	private void gameLoop() throws IOException, ClassNotFoundException{
 		 
 		gameModeMessage();
 		newGameMessage(keyboard.nextInt()); // This initializes the GameEngine either in debug mode or normal mode
@@ -110,7 +116,7 @@ public class UserInterface {
 	private void actionMessage()
 	{
 		System.out.println("What would you like to do? W = move up, A = move left, D = move right, "
-				+ "S = move down, F = shoot\n\n");
+				+ "S = move down, F = shoot, Z = save\n\n");
 	}
 	
 	private void newGameMessage(int option)
@@ -135,7 +141,7 @@ public class UserInterface {
 		System.out.println("Would you like to play the game in debug mode? (Enter 1 for yes and 0 for no): ");
 	}
 	
-	private void actionMethod(char movementchoice)
+	private void actionMethod(char movementchoice) throws IOException, ClassNotFoundException
 	{
 		
 		
@@ -162,6 +168,11 @@ public class UserInterface {
 						
 					
 						
+		}
+		else if(movementchoice == 'z' || movementchoice == 'Z')
+		{
+			game.saveGame();
+			System.out.println("Game Saved");
 		}
 		else
 			;
