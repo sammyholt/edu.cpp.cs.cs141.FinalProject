@@ -456,3 +456,229 @@ Expected result: Player can pick up a bullet to carry a total of 1 bullet.  outp
 Actual result: Player can pick up a bullet to carry a total of 1 bullet.  output: You picked up an ammo, you gained one bullet.
 Pass/Fail: Pass
 Comments: NA
+
+Test case id: 52
+Unit to test: Player's ability to pick up additional bullet with while carrying 0 bullet and invincibility enabled
+Assumptions: Player's ammo amount changes to 1
+Test data: Player's ammo 
+Expected result: Player can pick up a bullet to carry a total of 1 bullet.  output: You picked up an ammo, you gained one bullet.
+Actual result: Player can pick up a bullet to carry a total of 1 bullet.  output: You picked up an ammo, you gained one bullet.
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 53
+Unit to test: Player's ability to pick up additional bullet with while carrying 1 bullet and invincibility enabled
+Assumptions: Player's ammo amount changes to 1
+Test data: Player's ammo 
+Expected result: Player can pick up a bullet to carry a total of 1 bullet.  output: You picked up an ammo, you gained one bullet.
+Actual result: Player can pick up a bullet to carry a total of 1 bullet.  output: You picked up an ammo, you gained one bullet.
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 54
+Unit to test: Shooting with invincibility enabled decrements ammo amount
+Assumptions: Player's ammo amount reduces by 1
+Test data: Player's ammo 
+Expected result: Player can shoot while being invincible and decrement Ammo. Output: You didn't hit an enemy :( or you hit an enemy!
+Actual result: Player can shoot while being invincible and decrement Ammo. Output: You didn't hit an enemy :( or you hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 55
+Unit to test: Shooting with radar enabled decrements ammo amount
+Assumptions: Player's ammo amount reduces by 1
+Test data: Player's ammo 
+Expected result: Player can shoot with radar enabled and decrement Ammo. Output: You didn't hit an enemy :( or you hit an enemy!
+Actual result: Player can shoot with radar enabled and decrement Ammo. Output: You didn't hit an enemy :( or you hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 56
+Unit to test: Shooting decrements ammo amount
+Assumptions: Player's ammo amount reduces by 1 if ammo amount starts above 0.
+Test data: Player's ammo 
+Expected result: Player can shoot and ammo decrements. Output: You didn't hit an enemy :( or you hit an enemy!
+Actual result: Player can shoot and ammo decrements. Output: You didn't hit an enemy :( or you hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 57
+Unit to test: attempting to shoot without ANY ammo does not reduce ammo below 0
+Assumptions: Player's ammo will stay at 0. Shooting has no effect. 
+Test data: Player's ammo 
+Expected result: Player can attempt to shoot but nothing will happen. Ammo does not change from 0. Output: You didn't hit an enemy :(
+Actual result: Player can attempt to shoot but nothing will happen. Ammo does not change from 0. Output: You didn't hit an enemy :(
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 58
+Unit to test: shooting the Bullet (U) character has no effect
+Assumptions: Player's ammo will decrement. Shooting has no effect. 
+Test data: Player's ammo 
+Expected result: Player can attempt to shoot but nothing will happen. Ammo reduces by 1. Output: You didn't hit an enemy :(
+Actual result: Player can attempt to shoot but nothing will happen. Ammo reduces by 1. Output: You didn't hit an enemy :(
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 59
+Unit to test: shooting the Bullet (U) character has no effect
+Assumptions: Player's ammo will decrement. Shooting has no effect. 
+Test data: Player's ammo 
+Expected result: Player can attempt to shoot but nothing will happen. Ammo reduces by 1. Output: You didn't hit an enemy :(
+Actual result: Player can attempt to shoot but nothing will happen. Ammo reduces by 1. Output: You didn't hit an enemy :(
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 60
+Unit to test: shooting the Bullet (U) character has no effect with Radar enabled
+Assumptions: Player's ammo will decrement. Shooting has no effect. 
+Test data: Player's ammo 
+Expected result: Player can attempt to shoot but nothing will happen. Ammo reduces by 1. Output: You didn't hit an enemy :(
+Actual result: Player can attempt to shoot but nothing will happen. Ammo reduces by 1. Output: You didn't hit an enemy :(
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 61
+Unit to test: shooting a ninja that is behind a invincibility(I) character from south to north
+Assumptions: No effect on invincibility. Player's ammo will decrement. Shooting will kill the ninja, reducing the amount of ninjas by 1
+Test data: Player's ammo and Ninja amount
+Expected result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Actual result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 62
+Unit to test: shooting a ninja that is behind a radar(D) character from south to north
+Assumptions: No effect on radar. Player's ammo will decrement. Shooting will kill the ninja, reducing the amount of ninjas by 1
+Test data: Player's ammo and Ninja amount
+Expected result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Actual result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 63
+Unit to test: shooting a ninja that is behind a radar(D) character from west to east
+Assumptions: No effect on radar. Player's ammo will decrement. Shooting will kill the ninja, reducing the amount of ninjas by 1
+Test data: Player's ammo and Ninja amount
+Expected result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Actual result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 64
+Unit to test: shooting a ninja that is behind a Bullet(U) character from south to north
+Assumptions: No effect on Bullet. Player's ammo will decrement. Shooting will kill the ninja, reducing the amount of ninjas by 1
+Test data: Player's ammo and Ninja amount
+Expected result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Actual result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 65
+Unit to test: shooting a ninja that is behind a Bullet(U) character from west to east
+Assumptions: No effect on Bullet. Player's ammo will decrement. Shooting will kill the ninja, reducing the amount of ninjas by 1
+Test data: Player's ammo and Ninja amount
+Expected result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Actual result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 66
+Unit to test: shooting a ninja that is behind a Bullet(U) character from east to west
+Assumptions: No effect on Bullet. Player's ammo will decrement. Shooting will kill the ninja, reducing the amount of ninjas by 1
+Test data: Player's ammo and Ninja amount
+Expected result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Actual result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 67
+Unit to test: shooting a ninja that is behind a Radar(D) and two room's from west to east
+Assumptions: No effect on Radar or Rooms. Player's ammo will decrement. Shooting will kill the ninja, reducing the amount of ninjas by 1
+Test data: Player's ammo and Ninja amount
+Expected result: Player can shoot through a power up and multiple rooms killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Actual result: Player can shoot through a power up and multiple rooms killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 68
+Unit to test: shooting a ninja that is behind a Bullet(U) from north to south
+Assumptions: No effect on Bullet. Player's ammo will decrement. Shooting will kill the ninja, reducing the amount of ninjas by 1
+Test data: Player's ammo and Ninja amount
+Expected result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Actual result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 69
+Unit to test: shooting a ninja that is behind a Radar(D) from east to west
+Assumptions: No effect on Radar. Player's ammo will decrement. Shooting will kill the ninja, reducing the amount of ninjas by 1
+Test data: Player's ammo and Ninja amount
+Expected result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Actual result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 70
+Unit to test: shooting a ninja that is behind a invincibility(I) character from north to south
+Assumptions: No effect on invincibility. Player's ammo will decrement. Shooting will kill the ninja, reducing the amount of ninjas by 1
+Test data: Player's ammo and Ninja amount
+Expected result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Actual result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 71
+Unit to test: shooting a ninja that is behind a invincibility(I) character from west to east
+Assumptions: No effect on invincibility. Player's ammo will decrement. Shooting will kill the ninja, reducing the amount of ninjas by 1
+Test data: Player's ammo and Ninja amount
+Expected result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Actual result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 72
+Unit to test: shooting a ninja that is behind a invincibility(I) character from east to west
+Assumptions: No effect on invincibility. Player's ammo will decrement. Shooting will kill the ninja, reducing the amount of ninjas by 1
+Test data: Player's ammo and Ninja amount
+Expected result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Actual result: Player can shoot through a power up killing a ninja and Ammo reduces by 1. Output: You hit an enemy!
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 73
+Unit to test: Save and Load game with debug disabled
+Assumptions: Briefcase, Bullet ammount, Ninja Locations stay the same as when when first saved. Debug loads disabled
+Test data: Briefcase and Ninja and Player Location, Bullet and Lives amount
+Expected result: Player location the same (Up 3 from initial point), Briefcase and ninja location the same, bullet and life amount he same. All objects hiudden
+Actual result: Player location the same (Up 3 from initial point), Briefcase and ninja location the same, bullet and life amount he 
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 74
+Unit to test: Save and Load game with debug enabled
+Assumptions: Briefcase, Bullet ammount, Ninja Locations stay the same as when when first saved. Debug loads enabled
+Test data: Briefcase and Ninja and Player Location, Bullet and Lives amount
+Expected result: Player location the same (Up 3 from initial point), Briefcase and ninja location the same, bullet and life amount he same. All objects visible
+Actual result: Player location the same (Up 3 from initial point), Briefcase and ninja location the same, bullet and life amount he 
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 75
+Unit to test: Save and Load game with 2 ammo with debug enabled 
+Assumptions: Briefcase, Bullet ammount stays 2, Ninja Locations stay the same as when when first saved
+Test data: Briefcase and Ninja and Player Location, Bullet and Lives amount
+Expected result: Player location the same (Up 3 from initial point), Briefcase and ninja location the same, bullet and life amount the same
+Actual result: Player location the same (Up 3 from initial point), Briefcase and ninja location the same, bullet and life amount the same
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 76
+Unit to test: Save and Load game with 2 ammo with debug disabled
+Assumptions: Briefcase, Bullet ammount stays 2, Ninja Locations stay the same as when when first saved
+Test data: Briefcase and Ninja and Player Location, Bullet and Lives amount
+Expected result: Player location the same (Up 3 from initial point), Briefcase and ninja location the same, bullet and life amount the same
+Actual result: Player location the same (Up 3 from initial point), Briefcase and ninja location the same, bullet and life amount the same
+Pass/Fail: Pass
+Comments: NA
+
