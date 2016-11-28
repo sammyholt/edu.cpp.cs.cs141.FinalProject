@@ -106,39 +106,4 @@ public class SaveGame implements Serializable
 	public boolean getSavedGameWon(){
 		return gameFinished;
 	}
-
-	/**
-	 * This method will pass serializable objects Grid, Player, Ninja, Item, Room and GridItem and output the files 
-	 * to a file to be loaded at a later point 
-	 * 
-	 * @param gridParam
-	 */
-	public void Save(Grid gridParam) throws IOException
-	{
-		try {
-			
-			Grid grid = gridParam;
-			
-			FileOutputStream fileOut = new FileOutputStream("savegame.dat");
-			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
-			objectOut.writeObject(grid);
-			objectOut.close();
-			
-		} catch (IOException e) {
-			System.out.println("Error: File Cannot Be Saved. Try Again.");
-		}
-	}
-	
-	public Grid Load() throws IOException, ClassNotFoundException
-	{
-
-			FileInputStream fis = new FileInputStream("savegame.dat");
-			ObjectInputStream ois = new ObjectInputStream(fis);
-			Grid grid = (Grid) ois.readObject();
-			ois.close();
-			
-			return grid;
-		
-	}
-
 }
