@@ -18,7 +18,7 @@ public class UserInterface {
 	private GameEngine game = null;
 	private Scanner keyboard = null;
 	private boolean debugMode = false;
-	SaveGame sg = new SaveGame();
+	SaveGame sg = null;
 	
 	public UserInterface (GameEngine game){
 		this.game = game;
@@ -34,12 +34,14 @@ public class UserInterface {
 			
 			switch(option) {
 			case 1: // Starts a new game
-				gameLoop();
+				gameLoop(false);
 				break;
 			
 			case 2: // Loads a saved game
-				game.loadGrid(sg.Load());
-				gameLoop();
+				System.out.print("Enter a save name: ");
+				sg = game.loadGame(keyboard.next() + ".dat");
+				game.resetGame(sg);
+				gameLoop(true);
 				break;
 			
 			case 3: // Quits game
@@ -76,11 +78,14 @@ public class UserInterface {
 		return option;
 	}
 	
-	private void gameLoop() throws IOException, ClassNotFoundException{
-		 
-		gameModeMessage();
-		newGameMessage(keyboard.nextInt()); // This initializes the GameEngine either in debug mode or normal mode
+	private void gameLoop(boolean loadedGame) throws IOException, ClassNotFoundException{
 		
+		// if game was not loaded, initialize game
+		if(!loadedGame){
+			gameModeMessage();
+			newGameMessage(keyboard.nextInt()); // This initializes the GameEngine either in debug mode or normal mode
+		}
+	
 		while(!game.checkWinCondition() && !game.gameOver()){
 			
 			char movementchoice;
@@ -171,8 +176,11 @@ public class UserInterface {
 		}
 		else if(movementchoice == 'z' || movementchoice == 'Z')
 		{
-			game.saveGame();
-			System.out.println("Game Saved");
+			String fileName = "";
+			System.out.print("Enter a save name: ");
+			fileName = keyboard.next();
+			game.Save(fileName);
+			System.out.println("Game Saved as " + fileName);
 		}
 		else
 			;

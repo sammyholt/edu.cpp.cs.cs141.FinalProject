@@ -1,6 +1,10 @@
 package edu.cpp.cs.cs141.FinalProject;
 
+import java.io.FileInputStream;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 import java.util.Random;
 
 /**
@@ -58,11 +62,62 @@ public class GameEngine {
 		ninjasalive = 6;
 	}
 	
+	/**
+	 * This constructor takes a {@link SaveGame} object as a
+	 * parameter and builds the game correctly based on the
+	 * values in that object.
+	 * 
+	 * @param loadedGame
+	 */
+	public GameEngine(SaveGame loadedGame){
+		grid = loadedGame.getSavedGrid();
+		ninjasalive = loadedGame.getSavedNinjasAlive();
+		gameWon = loadedGame.getSavedGameWon();
+		gameFinished = loadedGame.getSavedGameFinished();
+	}
 	
-	public void loadGame() throws ClassNotFoundException, IOException
+	/**
+	 * This method will create a save file saving all the necessary 
+	 * parts of the {@link GameEngine} to a data file for later use 
+	 * by the {@link #loadGame(String)} method.
+	 * 
+	 * @param fileName
+	 * @throws IOException
+	 */
+	public void Save(String fileName) throws IOException
 	{
-		SaveGame sg = new SaveGame();
-		sg.Load();
+		try {
+			
+			// create the save object
+			SaveGame save = new SaveGame(grid, gameFinished, gameWon, ninjasalive);
+			
+			// write it to a file
+			FileOutputStream fileOut = new FileOutputStream(fileName + ".dat");
+			ObjectOutputStream objectOut = new ObjectOutputStream(fileOut);
+			objectOut.writeObject(save);
+			objectOut.close();
+			
+		} catch (IOException e) {
+			System.out.println("Error: File Cannot Be Saved. Try Again.");
+		}
+	}
+	
+	/**
+	 * This method will load a {@link SaveGame} from the passed data file name;
+	 * 
+	 * @param fileName
+	 * @return loadedGame
+	 * @throws ClassNotFoundException
+	 * @throws IOException
+	 */
+	public SaveGame loadGame(String fileName) throws ClassNotFoundException, IOException
+	{
+		FileInputStream fis = new FileInputStream(fileName);
+		ObjectInputStream ois = new ObjectInputStream(fis);
+		SaveGame loadedGame = (SaveGame) ois.readObject();
+		ois.close();
+		
+		return loadedGame;
 	}
 	
 	/*
@@ -73,6 +128,19 @@ public class GameEngine {
 		grid = new Grid();
 		gameFinished = false;
 		gameWon = false;
+	}
+	
+	/**
+	 * This method initializes the necessary fields
+	 * to load a previously saved game.
+	 * 
+	 * @param loadedGame
+	 */
+	public void resetGame(SaveGame loadedGame){
+		grid = loadedGame.getSavedGrid();
+		ninjasalive = loadedGame.getSavedNinjasAlive();
+		gameWon = loadedGame.getSavedGameWon();
+		gameFinished = loadedGame.getSavedGameFinished();
 	}
 	
 	/*
