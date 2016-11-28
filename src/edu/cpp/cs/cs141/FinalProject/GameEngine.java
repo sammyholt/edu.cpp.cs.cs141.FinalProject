@@ -144,15 +144,6 @@ public class GameEngine {
 	}
 	
 	/*
-	 * This will call a function in the @SaveGame object to initialize the save state
-	 */
-	public void saveGame() throws IOException
-	{
-		SaveGame sg = new SaveGame();
-		sg.Save(grid);
-	}
-	
-	/*
 	 * 				w(up)
 	 * 	a(left)		s(down)		d(right)
 	 * Returns the string for the UI to output to player
