@@ -682,3 +682,119 @@ Actual result: Player location the same (Up 3 from initial point), Briefcase and
 Pass/Fail: Pass
 Comments: NA
 
+Test case id: 77
+Unit to test: Load game with filename that does not exist
+Assumptions: game to request different load file
+Test data: SaveGame Load 
+Expected result: Output please try again
+Actual result: at java.util.Scanner.throwFor(Unknown Source)
+Pass/Fail: Fail
+Comments: Try and Catch should fix this?
+
+Test case id: 78
+Unit to test: Shooting the Room with the Briefcase has no effect on room and briefcase and decrements ammo from south to north
+Assumptions: only effect is ammo decrements
+Test data: Player's Ammo
+Expected result: Player's life and location stay the same. Ammo decrements by one. No effect on room
+Actual result: Player's life and location stay the same. Ammo decrements by one. No effect on room
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 79
+Unit to test: Shooting the Room with the Briefcase has no effect on room and briefcase and decrements ammo from north to south
+Assumptions: only effect is ammo decrements
+Test data: Player's Ammo
+Expected result: Player's life and location stay the same. Ammo decrements by one. No effect on room
+Actual result: Player's life and location stay the same. Ammo decrements by one. No effect on room
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 80
+Unit to test: Shooting the Room with the Briefcase has no effect on room and briefcase and decrements ammo from west to east
+Assumptions: only effect is ammo decrements
+Test data: Player's Ammo
+Expected result: Player's life and location stay the same. Ammo decrements by one. No effect on room
+Actual result: Player's life and location stay the same. Ammo decrements by one. No effect on room
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 81
+Unit to test: Shooting the Room with the Briefcase has no effect on room and briefcase and decrements ammo from east to west
+Assumptions: only effect is ammo decrements
+Test data: Player's Ammo
+Expected result: Player's life and location stay the same. Ammo decrements by one. No effect on room
+Actual result: Player's life and location stay the same. Ammo decrements by one. No effect on room
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 82 
+Unit to test: Shooting a ninja behind the Room with the Briefcase has no effect on room and briefcase and decrements ammo & ninja from north to south
+Assumptions: ammo and ninja decrements and ninja along with it's icon are removed from the board
+Test data: Player's Ammo and Ninja Amount
+Expected result: Player's life and location stay the same. Ammo and Ninja decrements by one. Ninja(N) removed. No effect on room
+Actual result: Player's life and location stay the same. Ammo and Ninja decrements by one. Ninja(N) removed. No effect on room
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 83 
+Unit to test: Shooting a ninja behind the Room with the Briefcase has no effect on room and briefcase and decrements ammo & ninja from east to west
+Assumptions: ammo and ninja decrements and ninja along with it's icon are removed from the board
+Test data: Player's Ammo and Ninja Amount
+Expected result: Player's life and location stay the same. Ammo and Ninja decrements by one. Ninja(N) removed. No effect on room
+Actual result: Player's life and location stay the same. Ammo and Ninja decrements by one. Ninja(N) removed. No effect on room
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 84
+Unit to test: Shooting a ninja behind the Room with the Briefcase has no effect on room and briefcase and decrements ammo & ninja from west to east
+Assumptions: ammo and ninja decrements and ninja along with it's icon are removed from the board
+Test data: Player's Ammo and Ninja Amount
+Expected result: Player's life and location stay the same. Ammo and Ninja decrements by one. Ninja(N) removed. No effect on room
+Actual result: Player's life and location stay the same. Ammo and Ninja decrements by one. Ninja(N) removed. No effect on room
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 85
+Unit to test: Shooting a ninja behind the Room with the Briefcase has no effect on room and briefcase and decrements ammo & ninja from south to north
+Assumptions: ammo and ninja decrements and ninja along with it's icon are removed from the board
+Test data: Player's Ammo and Ninja Amount
+Expected result: Player's life and location stay the same. Ammo and Ninja decrements by one. Ninja(N) removed. No effect on room
+Actual result: Player's life and location stay the same. Ammo and Ninja decrements by one. Ninja(N) removed. No effect on room
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 86
+Unit to test: Player's inability to walk through Room through east side with invincibility
+Assumptions: The player should not be able to walk through/check a room for the briefcase with invincibility.
+Test data: Player's movement
+Expected result: Player's location stay the same. Output: You can only enter the room from the top
+Actual result: Player's location stay the same. Output: You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 87
+Unit to test: Player's inability to walk through Room through south side with invincibility
+Assumptions: The player should not be able to walk through/check a room for the briefcase with invincibility.
+Test data: Player's movement
+Expected result: Player's location stay the same. Output: You can only enter the room from the top
+Actual result: Player's location stay the same. Output: You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 88
+Unit to test: Player's inability to walk through Room through west side with invincibility
+Assumptions: The player should not be able to walk through/check a room for the briefcase with invincibility.
+Test data: Player's movement
+Expected result: Player's location stay the same. Output: You can only enter the room from the top
+Actual result: Player's location stay the same. Output: You can only enter the room from the top
+Pass/Fail: Pass
+Comments: NA
+
+Test case id: 89
+Unit to test: Player's ability to check a room from the north with invincibility
+Assumptions: The player should able to check a room for the briefcase with invincibility.
+Test data: Player's movement
+Expected result: Player's location stay the same. Output: You found the briefcase! OR You entered the room and found nothing
+Actual result: Player's location stay the same. Output: You found the briefcase! OR You entered the room and found nothing
+Pass/Fail: Pass
+Comments: NA
