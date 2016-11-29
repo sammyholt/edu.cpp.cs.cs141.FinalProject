@@ -76,6 +76,7 @@ public class GameEngine {
 		ninjasalive = loadedGame.getSavedNinjasAlive();
 		gameWon = loadedGame.getSavedGameWon();
 		gameFinished = loadedGame.getSavedGameFinished();
+		invincibilityturns = 0;
 	}
 	
 	/**
@@ -214,8 +215,10 @@ public class GameEngine {
 	
 	public void ninjaAI(int ninjanumber){
 		//checks adjacent space to stab player
-		
-		if(!grid.player.invincibilityIsActive()){
+		if(invincibilityturns > 0){
+			System.out.println("You are invincible.");
+		}
+		else{
 			//Prevents ninjas from getting stabbed and the moving, aka effectively having two turns
 			boolean gotStabbed = false;
 			// check same row to the left of ninja
@@ -373,6 +376,7 @@ public class GameEngine {
 		if(abilityletter == "I"){
 			//TODO fix damage taking while invincible
 			grid.player.pickUpInvincibility();
+			invincibilityturns = 5;
 			return "You picked up invincibility! You cannot die for the next 5 turns!";
 		}
 		//D is for radar
@@ -389,8 +393,12 @@ public class GameEngine {
 	}
 	
 	public void endOfTurnCleanUp(){
+		System.out.println("Turn ends");
 		grid.player.radarUseOneTurn();
 		grid.player.invinciblityUseOneTurn();
+		if(invincibilityturns > 0)
+			invincibilityturns--;
+		
 	}
 	
 	
