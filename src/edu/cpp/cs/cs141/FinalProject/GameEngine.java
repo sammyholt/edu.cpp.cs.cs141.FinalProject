@@ -393,7 +393,6 @@ public class GameEngine {
 	}
 	
 	public void endOfTurnCleanUp(){
-		System.out.println("Turn ends");
 		grid.player.radarUseOneTurn();
 		grid.player.invinciblityUseOneTurn();
 		if(invincibilityturns > 0)
