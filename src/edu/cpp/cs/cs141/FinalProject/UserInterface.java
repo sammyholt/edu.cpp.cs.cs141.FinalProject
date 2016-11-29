@@ -115,13 +115,12 @@ public class UserInterface {
 		}
 		
 		
-		
 	}
 	
 	private void actionMessage()
 	{
 		System.out.println("What would you like to do? W = move up, A = move left, D = move right, "
-				+ "S = move down, F = shoot, Z = save, Q = quit game \n\n");
+				+ "S = move down, F = shoot, Z = save, Q = quit game, 1 = turn off debug mode, 2 = turn on debug mode\n\n");
 	}
 	
 	private void newGameMessage(int option)
@@ -171,8 +170,7 @@ public class UserInterface {
 					else
 						System.out.println("You didn't hit an enemy :(\n1");
 						
-					
-						
+										
 		}
 		else if(movementchoice == 'z' || movementchoice == 'Z')
 		{
@@ -189,6 +187,16 @@ public class UserInterface {
 			keyboard.nextLine();
 			System.out.println("\n\n\n");
 			quit = true;
+		}
+		else if(movementchoice == '1')
+		{
+			System.out.println("Debug mode has been turned off!\n");
+			game.grid.setDebugMode(false);
+		}
+		else if(movementchoice == '2')
+		{
+			System.out.println("Game mode is now in Debug mode!\n");
+			game.grid.setDebugMode(true);
 		}
 		else
 			;
