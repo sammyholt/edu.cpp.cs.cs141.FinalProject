@@ -18,6 +18,7 @@ public class UserInterface {
 	private GameEngine game = null;
 	private Scanner keyboard = null;
 	private boolean debugMode = false;
+	boolean quit = false;
 	SaveGame sg = null;
 	
 	public UserInterface (GameEngine game){
@@ -27,7 +28,6 @@ public class UserInterface {
 	
 	public void startGame() throws IOException, ClassNotFoundException {
 		printWelcomeMessage();
-		boolean quit = false;
 		
 		while (!quit) {
 			int option = mainMenu();
@@ -86,7 +86,7 @@ public class UserInterface {
 			newGameMessage(keyboard.nextInt()); // This initializes the GameEngine either in debug mode or normal mode
 		}
 	
-		while(!game.checkWinCondition() && !game.gameOver()){
+		while(!game.checkWinCondition() && !game.gameOver() && !quit){
 			
 			char movementchoice;
 			
@@ -121,7 +121,7 @@ public class UserInterface {
 	private void actionMessage()
 	{
 		System.out.println("What would you like to do? W = move up, A = move left, D = move right, "
-				+ "S = move down, F = shoot, Z = save\n\n");
+				+ "S = move down, F = shoot, Z = save, Q = quit game \n\n");
 	}
 	
 	private void newGameMessage(int option)
@@ -181,6 +181,14 @@ public class UserInterface {
 			fileName = keyboard.next();
 			game.Save(fileName);
 			System.out.println("Game Saved as " + fileName);
+		}
+		else if(movementchoice == 'q' || movementchoice == 'Q')
+		{
+			System.out.println("\n"
+					+ "Thank you for playing Spy Game.\n" + "Press ENTER to continue...");
+			keyboard.nextLine();
+			System.out.println("\n\n\n");
+			quit = true;
 		}
 		else
 			;
