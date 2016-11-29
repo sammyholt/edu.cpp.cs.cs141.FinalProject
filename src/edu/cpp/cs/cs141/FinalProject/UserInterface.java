@@ -93,7 +93,7 @@ public class UserInterface {
 			System.out.println("\n" + game.grid);
 			System.out.println("\nLives left: " + game.grid.player.getLives() );
 			System.out.println("Ammos left: " + game.grid.player.getAmmo());
-
+			System.out.println("Invincibility left: "+game.invincibilityturns);
 			
 			game.endOfTurnCleanUp();
 			
