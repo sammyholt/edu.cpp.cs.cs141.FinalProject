@@ -263,38 +263,63 @@ public class GameEngine {
 		}	
 		
 		int ninjamovementattemptcount = 0;
+		boolean[] ninjaMovementArray = new boolean[4];
 		boolean valid = false;
-		while (!valid && ninjamovementattemptcount < 10)
+		while (!valid && !ninjaTriedAllMoves(ninjaMovementArray))
 		{
 			Random rand = new Random();
 			int randomDirection = rand.nextInt(4);
 			
-			if(randomDirection == 0){
+			if(randomDirection == 0 && !ninjaMovementArray[0]){
+				ninjaMovementArray[0] = true;
 				if(validNinjaMove('w',ninjanumber)){
 					//grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate(), grid.ninjas[ninjanumber].getYCoordinate()+1);
 					valid = true;
 				}
 			}
-			else if(randomDirection == 1){
+			else if(randomDirection == 1 && !ninjaMovementArray[1]){
+				ninjaMovementArray[1] = true;
 				if(validNinjaMove('a',ninjanumber)){
 					//grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate()-1, grid.ninjas[ninjanumber].getYCoordinate());
+					
 					valid = true;
 				}
 			}
-			else if(randomDirection == 2){
+			else if(randomDirection == 2 && !ninjaMovementArray[2]){
+				ninjaMovementArray[2] = true;
 				if(validNinjaMove('s',ninjanumber)){
 					//grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate(), grid.ninjas[ninjanumber].getYCoordinate()-1);
+					
 					valid = true;
 				}
 			}
-			else 
+			else {
+				ninjaMovementArray[3] = true;
 				if(validNinjaMove('d',ninjanumber)){
 					//grid.ninjas[ninjanumber].giveCoordinates(grid.ninjas[ninjanumber].getXCoordinate()+1, grid.ninjas[ninjanumber].getYCoordinate());
+					
 					valid = true;
 				}
+			}
 			ninjamovementattemptcount++;		
 		}
 		
+	}
+	
+	/**
+	 * This method will return true if all the indexes of the array are true.
+	 * 
+	 * @param ninjaMovementArray
+	 * @return triedAllMoves
+	 */
+	public boolean ninjaTriedAllMoves(boolean[] ninjaMovementArray){
+		boolean triedAllMoves = true;
+		for(boolean b : ninjaMovementArray){
+			if(!b){
+				triedAllMoves = false;
+			}
+		}
+		return triedAllMoves;
 	}
 	
 	public boolean validNinjaMove(char movementchoice, int ninjanumber){
