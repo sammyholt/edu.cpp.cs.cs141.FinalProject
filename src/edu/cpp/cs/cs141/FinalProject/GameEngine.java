@@ -22,7 +22,13 @@ public class GameEngine {
 	private boolean gameFinished = false;
 	
 	private boolean gameWon = false;
-		
+	
+	protected Grid grid = null;
+	
+	public int ninjasalive;
+	
+	public int invincibilityturns;
+	
 	
 	public String displayGrid(){
 		return grid.toString();
@@ -47,10 +53,6 @@ public class GameEngine {
 		return gameWon;
 	}
 
-	//private Player p1 = null;
-	protected Grid grid = null;
-	public int ninjasalive;
-	
 	
 	public GameEngine(){
 		grid = new Grid();
