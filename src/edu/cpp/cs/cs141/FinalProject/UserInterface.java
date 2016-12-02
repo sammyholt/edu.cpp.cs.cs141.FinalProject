@@ -147,7 +147,18 @@ public class UserInterface {
 		// if game was not loaded, initialize game
 		if(!loadedGame){
 			gameModeMessage();
-			newGameMessage(keyboard.nextInt()); // This initializes the GameEngine either in debug mode or normal mode
+			int option = 0;
+			// allows for input type to be checked to get a valid input data type
+			while (true) {
+			    try {
+			        option = Integer.parseInt(keyboard.next());
+		        	keyboard.nextLine();
+			        break;
+			    } catch (NumberFormatException e) {
+			        System.out.print("Invalid input! Please try again: ");
+			    }
+			}
+			newGameMessage(option); // This initializes the GameEngine either in debug mode or normal mode
 		}
 	
 		while(!game.checkWinCondition() && !game.gameOver() && !quit){
