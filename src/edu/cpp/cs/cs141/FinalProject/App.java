@@ -21,21 +21,18 @@
 
 package edu.cpp.cs.cs141.FinalProject;
 
+import java.io.IOException;
+import java.util.Scanner;
+
 /**
- * 
- * This class represents the empty spaces on the board.  It has no properties, because it is
- * simply there to be used as a placeholder on the grid.
+ * The only purpose of this class is to hold the main method.
  * 
  * @author Samuel Holt
  *
  */
-public class EmptySpace extends GridItem {
-	
-	/**
-	 * This field is a string representation of empty space on the {@link Grid}.  It will
-	 * only be used if the game is not in debug mode.  It will also represent spaces that the
-	 * {@link Player} cannot see even if the space is not an {@link EmptySpace}.
-	 */
-	public static String stringRepresentation = "*";
-
+public class App {
+	public static void main(String[] args) throws IOException, ClassNotFoundException{
+		UserInterface ui = new UserInterface(new GameEngine(true));
+		ui.startGame();
+	}
 }

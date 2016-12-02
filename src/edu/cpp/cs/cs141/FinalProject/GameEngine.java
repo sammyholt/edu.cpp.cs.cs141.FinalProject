@@ -1,3 +1,24 @@
+/**
+ * CS 141: Intro to Programming and Problem Solving
+ * Professor: Edwin Rodríguez
+ *
+ * Final Project: Spy Game
+ *
+ * The game takes place inside a building which will be represented as a grid of 81 squares, 
+ * every square representing a possible position for different entities in the game (player's avatar, enemies, power-ups), 
+ * with the exception of 9 special squares which represent rooms, and are equally distributed on the grid.
+ * The player's character is a spy that is tasked with retrieving a briefcase containing classified enemy documents, 
+ * which is located in one of the rooms. 
+ * 
+ * Team Choryboys 
+ *   Robert Gil
+ *   Sammy Holt
+ *   Chory Gruta
+ *   Victor Yuen
+ *   Justin Do
+ *   Matthew McPartland
+ */
+
 package edu.cpp.cs.cs141.FinalProject;
 
 import java.io.FileInputStream;
@@ -6,6 +27,8 @@ import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Random;
+
+import com.sun.webkit.ThemeClient;
 
 /**
  * This class represents the main logic and stat tracking for the game.
@@ -18,22 +41,47 @@ import java.util.Random;
 public class GameEngine {
 
 
+	/**
+	 * This field represents if the current game has been completed or not.
+	 */
+	private boolean gameFinished;
 	
-	private boolean gameFinished = false;
+	/**
+	 * This field represents if the game has been won.
+	 */
+	private boolean gameWon;
 	
-	private boolean gameWon = false;
-	
+	/**
+	 * This field is the main {@link Grid} to be used in the game.
+	 */
 	protected Grid grid = null;
 	
+	/**
+	 * This field represents the amount of {@link Ninja}s alive in the 
+	 * current game.
+	 */
 	public int ninjasalive;
 	
+	/**
+	 * This field represents the amount of turns of {@link Invincibility} the {@link Player}
+	 * has remaining.
+	 */
 	public int invincibilityturns;
 	
-	
+	/**
+	 * This method can be used to display a string representation of the grid.
+	 * 
+	 * @return grid.toString() - A string representation of the {@link Grid}.
+	 */
 	public String displayGrid(){
 		return grid.toString();
 	}
 	
+	/**
+	 * This method will determine if the current game is over.
+	 * 
+	 * @return gameFinished - A boolean value that states whether or not the game is finished.
+	 */
 	public boolean gameOver() {
 		if(!grid.player.isAlive())
 		{
@@ -43,6 +91,11 @@ public class GameEngine {
 		return gameFinished;
 	}
 	
+	/**
+	 * This method will determine if the current game has been won or not.
+	 * 
+	 * @return gameWon - A boolean value representing if the game has been won.
+	 */
 	public boolean checkWinCondition() {
 		
 		if(grid.player.hasBriefcase()){
@@ -52,16 +105,28 @@ public class GameEngine {
 		}
 		return gameWon;
 	}
-
 	
+	/**
+	 * This is the default constructor for the {@link GameEngine}.  It will
+	 * initialize all the necessary variables based on the game rules.
+	 */
 	public GameEngine(){
 		grid = new Grid();
 		ninjasalive = 6;
+		gameFinished = false;
+		gameWon = false;
 	}
 	
+	/**
+	 * This constructor allows the game to be initialized with a custom debug mode.
+	 * 
+	 * @param debugIsOn - A boolean value representing the debug mode being on or off.
+	 */
 	public GameEngine(boolean debugIsOn){
 		grid = new Grid(debugIsOn);
 		ninjasalive = 6;
+		gameFinished = false;
+		gameWon = false;
 	}
 	
 	/**
@@ -123,7 +188,7 @@ public class GameEngine {
 		return loadedGame;
 	}
 	
-	/*
+	/**
 	 * This will reset all values that need to be changed to start a new game
 	 */
 	public void resetGame(){
@@ -146,7 +211,7 @@ public class GameEngine {
 		gameFinished = loadedGame.getSavedGameFinished();
 	}
 	
-	/*
+	/**
 	 * 				w(up)
 	 * 	a(left)		s(down)		d(right)
 	 * Returns the string for the UI to output to player
@@ -194,6 +259,15 @@ public class GameEngine {
 		return "";
 	}
 	
+	/**
+	 * This method will determine what happens when a {@link Player} attempts to enter a room.
+	 * If the {@link Player} enters from the top, the invalid move string will be returned.
+	 * Otherwise, the {@link Player} will be told what is happening inside the room.
+	 * 
+	 * @param movementchoice
+	 * @param targetgridspace
+	 * @return
+	 */
 	public String playerChecksRoom(char movementchoice, GridItem targetgridspace){
 		if(movementchoice == 's' || movementchoice == 'S'){
 			//TODO 
@@ -213,6 +287,14 @@ public class GameEngine {
 			return "You can only enter the room from the top";
 	}
 	
+	/**
+	 * This method will control all the logic of the {@link Ninja}s on the {@link Grid}.
+	 * If the {@link Ninja} can stab the {@link Player}, it will.  Otherwise, it will
+	 * try to move in a random direction.  All tried directions will be logged, and if a 
+	 * move cannot be completed, the {@link Ninja} will stay in its place.
+	 * 
+	 * @param ninjanumber
+	 */
 	public void ninjaAI(int ninjanumber){
 		//checks adjacent space to stab player
 		if(invincibilityturns > 0){
@@ -327,6 +409,14 @@ public class GameEngine {
 		return triedAllMoves;
 	}
 	
+	/**
+	 * This method will determine if the {@link Ninja} movement is
+	 * valid and proceed to move the {@link Ninja} if it is.
+	 * 
+	 * @param movementchoice
+	 * @param ninjanumber
+	 * @return
+	 */
 	public boolean validNinjaMove(char movementchoice, int ninjanumber){
 		
 		//TODO find a way to get unique ninja coordinates
@@ -371,6 +461,13 @@ public class GameEngine {
 		
 	}
 	
+	/**
+	 * This method allows the {@link Player} to pick up
+	 * {@link Item}s and be told about them.
+	 * 
+	 * @param abilityletter
+	 * @return
+	 */
 	public String givePlayerPowerUp(String abilityletter){
 		//I is for invincibility
 		if(abilityletter == "I"){
@@ -392,6 +489,10 @@ public class GameEngine {
 		
 	}
 	
+	/**
+	 * This method will allow all of the turn based {@link Item}s to
+	 * be used correctly by using their use one turn methods.
+	 */
 	public void endOfTurnCleanUp(){
 		grid.player.radarUseOneTurn();
 		grid.player.invinciblityUseOneTurn();
@@ -400,7 +501,13 @@ public class GameEngine {
 		
 	}
 	
-	
+	/**
+	 * This method will determine if the {@link Player} shoots
+	 *  and will also perform the logic associated with shooting.
+	 * 
+	 * @param directionofshot
+	 * @return
+	 */
 	public boolean playerShoots(char directionofshot){
 		if(!grid.player.hasAmmo()){
 			System.out.println("You have no ammo\n");
@@ -504,7 +611,10 @@ public class GameEngine {
 
 	}
 	
-		public void ninjaInit(){
+	/**
+	 * This method initializes variables necessary for {@link Ninja} movement.
+	 */
+	public void ninjaInit(){
 		GridItem testspace;
 		String testspaceletter;
 		int ninjacounter = 0;
@@ -521,9 +631,4 @@ public class GameEngine {
 		}
 
 	}
-		
-		public void loadGrid(Grid gridParam)
-		{
-			this.grid = gridParam;
-		}
 }

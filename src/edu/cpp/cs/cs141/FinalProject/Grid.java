@@ -40,14 +40,10 @@ public class Grid implements Serializable{
 	public static final int boardSize = 9;
 	
 	/**
-	 * This field is a string representation of empty space on the {@link Grid}.
-	 */
-	public String emptySpace = "*";
-	
-	/**
 	 * This flag determines if the {@link Grid} is in {@link #debugMode} or not.
 	 */
 	private boolean debugMode;
+	
 	/**
 	 * This flag determines if the briefcase has been found or not.
 	 */
@@ -91,7 +87,7 @@ public class Grid implements Serializable{
 	 * the {@link #initializeGrid()} method in order to place
 	 * all the {@link GridItems} on the {@link Grid}.
 	 */
-	    public Grid(){
+    public Grid(){
 		debugMode = false;
 		briefcaseFound = false;
 		initializeGrid();
@@ -101,9 +97,12 @@ public class Grid implements Serializable{
 	 * This constructor for the grid allows the {@link #debugMode} to be passed. This will run
 	 * the {@link #initializeGrid()} method in order to place
 	 * all the {@link GridItems} on the {@link Grid}.
+	 * 
+	 * @param debug - This boolean parameter allows for the debug mode to be set manually.
 	 */
 	public Grid(boolean debug){
 		debugMode = debug;
+		briefcaseFound = false;
 		initializeGrid();
 	}
 	
@@ -468,7 +467,7 @@ public class Grid implements Serializable{
 				s = letterFromClassName(item, className);
 				// want to represent visible empty
 				// space differently than normal empty space
-				if(s.equals(emptySpace)){
+				if(s.equals(EmptySpace.stringRepresentation)){
 					s = " ";
 				}
 			}else{
@@ -486,7 +485,7 @@ public class Grid implements Serializable{
 					else
 						s = "R";
 				}else{
-					s = emptySpace;
+					s = EmptySpace.stringRepresentation;
 				}
 			}
 			
@@ -512,7 +511,7 @@ public class Grid implements Serializable{
 			if(debugMode){
 				s = " ";
 			}else{
-				s = emptySpace;
+				s = EmptySpace.stringRepresentation;
 			}
 			break;
 		case "Room":

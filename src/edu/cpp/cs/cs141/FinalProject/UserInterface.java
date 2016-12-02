@@ -1,9 +1,31 @@
+/**
+ * CS 141: Intro to Programming and Problem Solving
+ * Professor: Edwin Rodríguez
+ *
+ * Final Project: Spy Game
+ *
+ * The game takes place inside a building which will be represented as a grid of 81 squares, 
+ * every square representing a possible position for different entities in the game (player's avatar, enemies, power-ups), 
+ * with the exception of 9 special squares which represent rooms, and are equally distributed on the grid.
+ * The player's character is a spy that is tasked with retrieving a briefcase containing classified enemy documents, 
+ * which is located in one of the rooms. 
+ * 
+ * Team Choryboys 
+ *   Robert Gil
+ *   Sammy Holt
+ *   Chory Gruta
+ *   Victor Yuen
+ *   Justin Do
+ *   Matthew McPartland
+ */
+
 package edu.cpp.cs.cs141.FinalProject;
 
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.util.Scanner;
+
 /**
  * This class represents the user interface of the game.  It is what allows
  * the player to send information to the game engine and receive information
@@ -63,6 +85,12 @@ public class UserInterface {
 		System.out.println("Welcome to Spy Game! \n\n");
 	}
 	
+	/**
+	 * This method is responsible for printing out menu options
+	 * to the console and taking in the user's input.
+	 * 
+	 * @return option
+	 */
 	private int mainMenu(){
 		int option = 3;
 		
@@ -78,6 +106,15 @@ public class UserInterface {
 		return option;
 	}
 	
+	/**
+	 * This is the main game loop.  Everything happening from the {@link GameEngine}
+	 * is called in this loop.
+	 * 
+	 * @param loadedGame - This boolean parameter allows for the flag to be thrown if
+	 * the game was a loaded save or a new game.
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	private void gameLoop(boolean loadedGame) throws IOException, ClassNotFoundException{
 		
 		// if game was not loaded, initialize game
@@ -106,23 +143,25 @@ public class UserInterface {
 					game.ninjaAI(ninjanumber);
 				}
 			}
-			/*
-			if(debugMode)
-				for(int i = 0 ; i < game.ninjasalive ; i++){
-				System.out.println("\nNinja Coordinates\n"+game.grid.ninjas[i].getXCoordinate()+","+game.grid.ninjas[i].getYCoordinate());
-				}
-				*/
 		}
-		
-		
 	}
 	
+	/**
+	 * This method prints the available game actions to the console.
+	 */
 	private void actionMessage()
 	{
 		System.out.println("What would you like to do? W = move up, A = move left, D = move right, "
 				+ "S = move down, F = shoot, Z = save, Q = quit game, 1 = turn off debug mode, 2 = turn on debug mode\n\n");
 	}
 	
+	/**
+	 * This message prints the new game started message to the console.
+	 * 
+	 * @param option - This integer is passed to determine if the
+	 * game was started in debug mode or not.  If the passed value
+	 * is {@code 1}, the debug message will print.
+	 */
 	private void newGameMessage(int option)
 	{
 		if(option == 1){
@@ -140,11 +179,24 @@ public class UserInterface {
 
 	}
 	
+	/**
+	 * This message asks the user if they would like to play in debug or normal mode.
+	 */
 	private void gameModeMessage()
 	{
 		System.out.println("Would you like to play the game in debug mode? (Enter 1 for yes and 0 for no): ");
 	}
 	
+	/**
+	 * This method uses the {@link GameEngine} to accomplish different tasks
+	 * based on the input choice given by the user.
+	 * 
+	 * @param movementchoice - a character choice which determines the action
+	 * the user would like to take.
+	 * 
+	 * @throws IOException
+	 * @throws ClassNotFoundException
+	 */
 	private void actionMethod(char movementchoice) throws IOException, ClassNotFoundException
 	{
 		
