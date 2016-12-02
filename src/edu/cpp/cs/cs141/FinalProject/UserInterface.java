@@ -93,17 +93,44 @@ public class UserInterface {
 	 */
 	private int mainMenu(){
 		int option = 3;
-		
+
 		System.out.println("\tMenu\n\n"
 				+ "\t1. Start New Game.\n"
 				+ "\t2. Load Game. \n"
 				+ "\t3. Quit.\n\n"
 				+ "Choose an option: ");
 		
-		option = keyboard.nextInt();
-		keyboard.nextLine();
+		// allows for input type to be checked
+		while (true) {
+		    try {
+		        option = Integer.parseInt(keyboard.next());
+		        if(validMainMenuOption(option)){
+		        	keyboard.nextLine();
+			        break;
+		        }else{
+		        	System.out.print("Invalid input! Please try again: ");
+		        }
+		    } catch (NumberFormatException e) {
+		        System.out.print("Invalid input! Please try again: ");
+		    }
+		}
 		
 		return option;
+	}
+	
+	/**
+	 * This method determines if the entered option is a valid menu option.
+	 * 
+	 * @return validMainMenuOption - This boolean will return true if the option is valid.
+	 */
+	private boolean validMainMenuOption(int option){
+		int[] options = {1,2,3};
+		boolean valid = false;
+		
+		if(game.contains(options, option)){
+			valid = true;
+		}
+		return valid;
 	}
 	
 	/**

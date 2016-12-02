@@ -22,13 +22,12 @@
 package edu.cpp.cs.cs141.FinalProject;
 
 import java.io.FileInputStream;
+import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 import java.util.Random;
-
-import com.sun.webkit.ThemeClient;
 
 /**
  * This class represents the main logic and stat tracking for the game.
@@ -178,8 +177,7 @@ public class GameEngine {
 	 * @throws ClassNotFoundException
 	 * @throws IOException
 	 */
-	public SaveGame loadGame(String fileName) throws ClassNotFoundException, IOException
-	{
+	public SaveGame loadGame(String fileName) throws ClassNotFoundException, IOException{
 		FileInputStream fis = new FileInputStream(fileName);
 		ObjectInputStream ois = new ObjectInputStream(fis);
 		SaveGame loadedGame = (SaveGame) ois.readObject();
@@ -499,6 +497,23 @@ public class GameEngine {
 		if(invincibilityturns > 0)
 			invincibilityturns--;
 		
+	}
+	
+	/**
+	 * This method will determine if an integer array contains a certain integer.
+	 * 
+	 * @param array - An array of integers.
+	 * @param item - An integer item to look for.
+	 * @return contains - A boolean value representing if the array contains the item or not.
+	 */
+	public boolean contains(int[] array, int item){
+		boolean contains = false;
+		for(int a : array){
+			if(a == item){
+				contains = true;
+			}
+		}
+		return contains;
 	}
 	
 	/**
